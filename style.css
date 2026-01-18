@@ -140,4 +140,26 @@ p {
   background: rgba(0, 0, 40, 0.6);
   z-index: 5;
 }
+/* FUNDO DOS PRESIDENTES */
+.leader-bg {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+  opacity: 0.55;
+  z-index: 1;
+}
+
+/* PRESIDENTE ESQUERDA */
+.leader-bg.left {
+  left: 0;
+}
+
+/* PRESIDENTE DIREITA */
+.leader-bg.right {
+  right: 0;
+}
 
