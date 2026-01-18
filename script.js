@@ -10,17 +10,18 @@ function showSlide(index) {
 window.addEventListener("wheel", (e) => {
   if (isScrolling) return;
 
-  isScrolling = true;
-
   if (e.deltaY > 0 && current < slides.length - 1) {
     current++;
   } else if (e.deltaY < 0 && current > 0) {
     current--;
+  } else {
+    return;
   }
 
+  isScrolling = true;
   showSlide(current);
 
   setTimeout(() => {
     isScrolling = false;
-  }, 1200);
+  }, 700); // MAIS RÁPIDO E SUAVE
 });
