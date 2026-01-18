@@ -33,18 +33,20 @@ body {
   z-index: 10;
 }
 
-/* INTRO */
+/* INTRODUÇÃO */
 .intro {
   background: url("assets/jornal.png") center/cover no-repeat;
 }
 
-/* CONFLITO */
+/* FUNDO DIVIDIDO (CONFLITOS) */
 .background {
   position: absolute;
   inset: 0;
   display: flex;
+  z-index: 0;
 }
 
+/* CADA LADO */
 .bg {
   width: 50%;
   height: 100%;
@@ -54,22 +56,53 @@ body {
   transition: filter 1.2s ease;
 }
 
+/* POSIÇÃO */
 .bg.left {
-  background-image: url("assets/putin.png");
+  background-position: right center;
 }
 
 .bg.right {
+  background-position: left center;
+}
+
+/* ===== IMAGENS POR CONFLITO ===== */
+
+/* RUSSIA x UKRAINE */
+.bg.putin {
+  background-image: url("assets/putin.png");
+}
+
+.bg.zelensky {
   background-image: url("assets/zelensky.png");
 }
 
-/* OVERLAY MAIS FORTE NO FUNDO */
+/* ISRAEL x HAMAS */
+.bg.hamas {
+  background-image: url("assets/hamas.png");
+}
+
+.bg.israel {
+  background-image: url("assets/israel.jpeg");
+}
+
+/* USA x IRAN */
+.bg.usa {
+  background-image: url("assets/eua.jpeg");
+}
+
+.bg.iran {
+  background-image: url("assets/ira.jpeg");
+}
+
+/* OVERLAY (FUNDO MAIS ESCURO QUE TEXTO) */
 .overlay {
   position: absolute;
   inset: 0;
   background: rgba(5, 10, 30, 0.65);
+  z-index: 1;
 }
 
-/* TEXTO (MENOS FADE) */
+/* TEXTO FLUTUANTE */
 .text-box {
   position: absolute;
   top: 50%;
@@ -82,6 +115,7 @@ body {
   box-shadow: 0 25px 60px rgba(0,0,0,0.6);
   opacity: 0;
   transition: opacity 0.8s ease;
+  z-index: 2;
 }
 
 .slide.active .text-box {
