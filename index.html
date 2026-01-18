@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Image Test</title>
+  <meta charset="UTF-8" />
+  <title>Russia x Ukraine</title>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body style="margin:0; background:black;">
+<body>
 
-  <img
-    src="assets/putin.png"
-    style="width:50vw; height:100vh; object-fit:cover;"
-  >
+  <div class="slides">
 
-  <img
-    src="assets/zelensky.png"
-    style="width:50vw; height:100vh; object-fit:cover;"
-  >
+    <!-- SLIDE CONFLITO -->
+    <section class="slide active">
 
+      <!-- IMAGENS DE FUNDO -->
+      <div class="background">
+        <div class="bg left"></div>
+        <div class="bg right"></div>
+      </div>
+
+      <!-- OVERLAY -->
+      <div class="overlay"></div>
+
+      <!-- TEXTO -->
+      <div class="text-box">
+        <h1>Russia × Ukraine</h1>
+
+        <p>
+          The conflict between Russia and Ukraine represents one of the most
+          significant geopolitical crises of the 21st century, involving
+          questions of sovereignty, security, and global stability.
+        </p>
+
+        <p>
+          Political Opinion is a neutral platform. It does not promote
+          ideologies, influence decisions, or endorse positions. Its purpose
+          is to observe and understand global public sentiment.
+        </p>
+
+        <p class="note">Observation, not influence.</p>
+      </div>
+
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
