@@ -1,4 +1,35 @@
-/* BACKGROUND DOS LÍDERES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #000;
+  overflow: hidden;
+}
+
+/* CONTAINER */
+.slides {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* SLIDE */
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* BACKGROUND LEADERS */
 .leader-bg {
   position: absolute;
   top: 0;
@@ -7,8 +38,7 @@
   background-size: cover;
   background-position: center;
   filter: blur(3px);
-  opacity: 0.55;
-  z-index: 1;
+  opacity: 0.6;
 }
 
 .leader-bg.left {
@@ -17,4 +47,42 @@
 
 .leader-bg.right {
   right: 0;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 60, 0.55);
+  z-index: 2;
+}
+
+/* TEXT BOX */
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 700px;
+  padding: 40px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #e5e7eb;
+  border-radius: 12px;
+  z-index: 3;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+/* TYPOGRAPHY */
+h1 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.note {
+  font-style: italic;
+  color: #9ca3af;
 }
