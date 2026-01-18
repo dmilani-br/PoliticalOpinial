@@ -1,6 +1,6 @@
 const slides = document.querySelectorAll(".slide");
 let current = 0;
-let isScrolling = false;
+let locked = false;
 
 function showSlide(index) {
   slides.forEach(slide => slide.classList.remove("active"));
@@ -8,7 +8,7 @@ function showSlide(index) {
 }
 
 window.addEventListener("wheel", (e) => {
-  if (isScrolling) return;
+  if (locked) return;
 
   if (e.deltaY > 0 && current < slides.length - 1) {
     current++;
@@ -18,10 +18,10 @@ window.addEventListener("wheel", (e) => {
     return;
   }
 
-  isScrolling = true;
+  locked = true;
   showSlide(current);
 
   setTimeout(() => {
-    isScrolling = false;
-  }, 700); // MAIS RÁPIDO E SUAVE
+    locked = false;
+  }, 700);
 });
