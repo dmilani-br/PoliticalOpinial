@@ -12,69 +12,67 @@ body {
 
 /* CONTAINER */
 .slides {
-  position: relative;
   width: 100vw;
   height: 100vh;
+  position: relative;
 }
 
 /* SLIDE */
 .slide {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 0.8s ease;
 }
 
-.slide.active {
-  opacity: 1;
-}
-
-/* BACKGROUND LEADERS */
-.leader-bg {
+/* FUNDO COM IMAGENS */
+.background {
   position: absolute;
-  top: 0;
+  inset: 0;
+  display: flex;
+}
+
+.bg {
   width: 50%;
   height: 100%;
   background-size: cover;
   background-position: center;
-  filter: blur(3px);
-  opacity: 0.8;          /* ↑ mais visível */
-  z-index: 1;            /* ← fundo */
+  filter: blur(6px) brightness(0.8);
 }
 
-
-.leader-bg.left {
-  left: 0;
+/* ZELENSKY - ESQUERDA */
+.bg.left {
+  background-image: url("assets/zelensky.png");
 }
 
-.leader-bg.right {
-  right: 0;
+/* PUTIN - DIREITA */
+.bg.right {
+  background-image: url("assets/putin.png");
 }
 
 /* OVERLAY */
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 60, 0.35); /* ↓ menos escuro */
-  z-index: 2;                      /* ← acima das imagens */
+  background: rgba(5, 10, 30, 0.55);
 }
-/* TEXT BOX */
+
+/* TEXTO */
 .text-box {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 700px;
+  max-width: 720px;
   padding: 40px;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.88);
   color: #e5e7eb;
-  border-radius: 12px;
-  z-index: 3;   /* ← sempre acima */
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  border-radius: 14px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
-/* TYPOGRAPHY */
+
+/* TIPOGRAFIA */
 h1 {
   margin-bottom: 20px;
+  font-size: 32px;
 }
 
 p {
@@ -83,6 +81,7 @@ p {
 }
 
 .note {
+  margin-top: 10px;
   font-style: italic;
   color: #9ca3af;
 }
