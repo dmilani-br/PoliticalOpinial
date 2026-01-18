@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Test – Russia x Ukraine</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<title>TEST Russia Ukraine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
+<style>
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
 
-<section class="slide active">
+.slide {
+  position: fixed;
+  inset: 0;
+  background: black;
+  overflow: hidden;
+}
 
-  <!-- PRESIDENTE RÚSSIA -->
-  <div class="leader-bg left"
-    style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/7/75/Vladimir_Putin_2023.jpg')">
-  </div>
+.leader {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+}
 
-  <!-- PRESIDENTE UCRÂNIA -->
-  <div class="leader-bg right"
-    style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5d/Volodymyr_Zelenskyy_Official_Portrait.jpg')">
-  </div>
+.left {
+  left: 0;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/75/Vladimir_Putin_2023.jpg");
+}
 
-  <!-- OVERLAY -->
-  <div class="conflict-overlay"></div>
+.right {
+  right: 0;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5d/Volodymyr_Zelenskyy_Official_Portrait.jpg");
+}
 
-  <!-- TEXTO -->
-  <div class="text-box">
-    <h2>Russia × Ukraine</h2>
-    <p>
-      This conflict escalated in 2022 and reflects deep geopolitical,
-      historical, and security tensions.
-    </p>
-    <p class="note">
-      This platform observes public opinion. It does not influence it.
-    </p>
-  </div>
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,50,0.6);
+}
 
-</section>
-
-</body>
-</html>
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 40px;
+  max-width: 600px;
+  font-family: Arial;
+  z-index: 10;
+}
+</style
