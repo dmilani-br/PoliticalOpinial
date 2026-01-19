@@ -1,3 +1,5 @@
+/* ================= SLIDES ================= */
+
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 let autoSlideTimer;
@@ -18,14 +20,53 @@ function prevSlide() {
   showSlide((currentSlide - 1 + slides.length) % slides.length);
 }
 
+function resetAutoSlide() {
+  clearInterval(autoSlideTimer);
+  autoSlideTimer = setInterval(nextSlide, 10000);
+}
+
 function startAutoSlide() {
   autoSlideTimer = setInterval(nextSlide, 10000);
 }
 
+/* ===== SCROLL DO MOUSE ===== */
+window.addEventListener("wheel", (e) => {
+  if (isScrolling) return;
+
+  isScrolling = true;
+
+  if (e.deltaY > 0) {
+    nextSlide();
+  } else {
+    prevSlide();
+  }
+
+  resetAutoSlide();
+  setTimeout(() => (isScrolling = false), 1200);
+});
+
+/* ===== TECLADO ↑ ↓ ===== */
+window.addEventListener("keydown", (e) => {
+  if (isScrolling) return;
+
+  if (e.key === "ArrowDown") {
+    nextSlide();
+  }
+
+  if (e.key === "ArrowUp") {
+    prevSlide();
+  }
+
+  resetAutoSlide();
+  isScrolling = true;
+  setTimeout(() => (isScrolling = false), 1200);
+});
+
+/* ===== INICIALIZA ===== */
 showSlide(0);
 startAutoSlide();
 
-/* ====== LANGUAGES ====== */
+/* ================= LANGUAGES ================= */
 
 const translations = {
   en: {
@@ -127,7 +168,9 @@ const translations = {
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    if (translations[lang][key]) el.innerText = translations[lang][key];
+    if (translations[lang] && translations[lang][key]) {
+      el.innerText = translations[lang][key];
+    }
   });
   localStorage.setItem("lang", lang);
 }
@@ -135,5 +178,7 @@ function setLanguage(lang) {
 setLanguage(localStorage.getItem("lang") || "en");
 
 document.querySelectorAll(".language-switcher img").forEach(img => {
-  img.addEventListener("click", () => setLanguage(img.dataset.lang));
+  img.addEventListener("click", () => {
+    setLanguage(img.dataset.lang);
+  });
 });
