@@ -93,6 +93,14 @@ body {
 .bg.iran {
   background-image: url("assets/ira.jpeg");
 }
+/* TAIWAN x CHINA */
+.bg.taiwan {
+  background-image: url("assets/taiwan.jpeg");
+}
+
+.bg.china {
+  background-image: url("assets/china.jpeg");
+}
 
 /* OVERLAY (FUNDO MAIS ESCURO QUE TEXTO) */
 .overlay {
