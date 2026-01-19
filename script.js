@@ -1,42 +1,66 @@
 const slides = document.querySelectorAll(".slide");
-let current = 0;
-let autoplay;
-let pauseTimeout;
+let currentSlide = 0;
+let autoSlideTimer;
+let isScrolling = false;
 
-/* MOSTRAR SLIDE */
 function showSlide(index) {
-  slides[current].classList.remove("active");
-  current = (index + slides.length) % slides.length;
-  slides[current].classList.add("active");
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+  currentSlide = index;
 }
 
-/* AUTOPLAY */
-function startAutoplay() {
-  autoplay = setInterval(() => {
-    showSlide(current + 1);
-  }, 8000);
+function nextSlide() {
+  const next = (currentSlide + 1) % slides.length;
+  showSlide(next);
 }
 
-/* PAUSAR AUTOPLAY */
-function pauseAutoplay() {
-  clearInterval(autoplay);
-  clearTimeout(pauseTimeout);
-
-  pauseTimeout = setTimeout(() => {
-    startAutoplay();
-  }, 35000);
+function prevSlide() {
+  const prev = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(prev);
 }
 
-/* SCROLL CONTROL */
+function resetAutoSlide() {
+  clearTimeout(autoSlideTimer);
+  autoSlideTimer = setTimeout(startAutoSlide, 35000);
+}
+
+function startAutoSlide() {
+  autoSlideTimer = setInterval(nextSlide, 10000);
+}
+
+/* SCROLL DO MOUSE */
 window.addEventListener("wheel", (e) => {
-  pauseAutoplay();
+  if (isScrolling) return;
+  isScrolling = true;
 
   if (e.deltaY > 0) {
-    showSlide(current + 1);
+    nextSlide();
   } else {
-    showSlide(current - 1);
+    prevSlide();
   }
+
+  resetAutoSlide();
+  setTimeout(() => (isScrolling = false), 1200);
 });
 
-/* INICIAR */
-startAutoplay();
+/* TECLADO ↑ ↓ */
+window.addEventListener("keydown", (e) => {
+  if (isScrolling) return;
+
+  if (e.key === "ArrowDown") {
+    nextSlide();
+  }
+
+  if (e.key === "ArrowUp") {
+    prevSlide();
+  }
+
+  resetAutoSlide();
+  isScrolling = true;
+  setTimeout(() => (isScrolling = false), 1200);
+});
+
+/* INICIALIZA */
+showSlide(0);
+startAutoSlide();
