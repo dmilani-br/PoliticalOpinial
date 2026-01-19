@@ -95,11 +95,11 @@ body {
 }
 /* TAIWAN x CHINA */
 .bg.taiwan {
-  background-image: url("assets/taiwan.jpeg");
+  background-image: url("assets/china.jpeg");
 }
 
 .bg.china {
-  background-image: url("assets/china.jpeg");
+  background-image: url("assets/taiwan.jpeg");
 }
 
 /* OVERLAY (FUNDO MAIS ESCURO QUE TEXTO) */
