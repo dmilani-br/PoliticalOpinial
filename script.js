@@ -10,6 +10,7 @@ const translations = {
     intro_p5: "Readers express their opinion by trading digital assets linked to global events.",
     note: "Observation, not influence.",
 
+    manifesto_btn: "Manifesto",
     manifesto_title: "Manifesto",
     manifesto_p1: "Political Opinion is an observational platform. It does not promote ideologies, candidates, or outcomes.",
     manifesto_p2: "Opinions are expressed through decentralized market participation, not surveys, narratives, or influence.",
@@ -27,6 +28,7 @@ const translations = {
     intro_p5: "Os leitores expressam sua opinião negociando ativos digitais ligados a eventos globais.",
     note: "Observação, não influência.",
 
+    manifesto_btn: "Manifesto",
     manifesto_title: "Manifesto",
     manifesto_p1: "Political Opinion é uma plataforma de observação. Não promove ideologias, candidatos ou resultados.",
     manifesto_p2: "As opiniões são expressas por meio da participação em mercados descentralizados, não por pesquisas ou narrativas.",
@@ -44,6 +46,7 @@ const translations = {
     intro_p5: "Los lectores expresan su opinión negociando activos digitales vinculados a eventos globales.",
     note: "Observación, no influencia.",
 
+    manifesto_btn: "Manifiesto",
     manifesto_title: "Manifiesto",
     manifesto_p1: "Political Opinion es una plataforma de observación. No promueve ideologías, candidatos ni resultados.",
     manifesto_p2: "Las opiniones se expresan mediante la participación en mercados descentralizados, no encuestas ni narrativas.",
@@ -61,6 +64,7 @@ const translations = {
     intro_p5: "Les lecteurs expriment leur opinion en échangeant des actifs numériques liés à des événements mondiaux.",
     note: "Observation, pas influence.",
 
+    manifesto_btn: "Manifeste",
     manifesto_title: "Manifeste",
     manifesto_p1: "Political Opinion est une plateforme d’observation. Elle ne promeut aucune idéologie, candidat ou résultat.",
     manifesto_p2: "Les opinions s’expriment par la participation à des marchés décentralisés, pas par des sondages ou récits.",
@@ -78,6 +82,7 @@ const translations = {
     intro_p5: "读者通过交易与全球事件相关的数字资产来表达观点。",
     note: "观察，而非影响。",
 
+    manifesto_btn: "宣言",
     manifesto_title: "宣言",
     manifesto_p1: "Political Opinion 是一个观察平台，不推广任何意识形态、候选人或结果。",
     manifesto_p2: "观点通过去中心化市场参与表达，而非调查、叙事或引导。",
