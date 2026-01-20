@@ -1,184 +1,103 @@
-/* ================= SLIDES ================= */
-
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-let autoSlideTimer;
-let isScrolling = false;
-
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-  });
-  currentSlide = index;
-}
-
-function nextSlide() {
-  showSlide((currentSlide + 1) % slides.length);
-}
-
-function prevSlide() {
-  showSlide((currentSlide - 1 + slides.length) % slides.length);
-}
-
-function resetAutoSlide() {
-  clearInterval(autoSlideTimer);
-  autoSlideTimer = setInterval(nextSlide, 10000);
-}
-
-function startAutoSlide() {
-  autoSlideTimer = setInterval(nextSlide, 10000);
-}
-
-/* ===== SCROLL DO MOUSE ===== */
-window.addEventListener("wheel", (e) => {
-  if (isScrolling) return;
-
-  isScrolling = true;
-
-  if (e.deltaY > 0) {
-    nextSlide();
-  } else {
-    prevSlide();
-  }
-
-  resetAutoSlide();
-  setTimeout(() => (isScrolling = false), 1200);
-});
-
-/* ===== TECLADO ↑ ↓ ===== */
-window.addEventListener("keydown", (e) => {
-  if (isScrolling) return;
-
-  if (e.key === "ArrowDown") {
-    nextSlide();
-  }
-
-  if (e.key === "ArrowUp") {
-    prevSlide();
-  }
-
-  resetAutoSlide();
-  isScrolling = true;
-  setTimeout(() => (isScrolling = false), 1200);
-});
-
-/* ===== INICIALIZA ===== */
-showSlide(0);
-startAutoSlide();
-
-/* ================= LANGUAGES ================= */
-
 const translations = {
   en: {
     intro_title: "Political Opinion",
     intro_p1: "The world is shaped by political decisions, yet public opinion often remains invisible or distorted.",
     intro_p2: "Political Opinion is a neutral platform that reveals public sentiment through the buying and selling of cryptocurrencies.",
-    intro_p3: "Each transaction represents a sincere individual perspective, expressed freely without surveys, manipulation, or intermediaries.",
+    intro_p3: "Each transaction represents a sincere individual perspective.",
     intro_h2_1: "Neutrality",
-    intro_p4: "No ideologies. No endorsements. No influence over decisions.",
+    intro_p4: "No ideologies. No endorsements. No influence.",
     intro_h2_2: "How It Works",
-    intro_p5: "Readers express their opinion by trading digital assets linked to global political events and leaders.",
+    intro_p5: "Readers express their opinion by trading digital assets linked to global events.",
     note: "Observation, not influence.",
-    ru_title: "Russia × Ukraine",
-    ru_p1: "The conflict between Russia and Ukraine represents one of the most significant geopolitical crises of the 21st century.",
-    ru_p2: "Political Opinion does not endorse positions or outcomes. It observes public sentiment expressed through decentralized markets.",
-    hi_title: "Hamas × Israel",
-    hi_p1: "The Israel–Hamas conflict is rooted in decades of political tensions in the Middle East.",
-    hi_p2: "It encompasses issues of security, governance and international law.",
-    hi_p3: "Political Opinion does not promote narratives or outcomes."
+
+    manifesto_title: "Manifesto",
+    manifesto_p1: "Political Opinion is an observational platform. It does not promote ideologies, candidates, or outcomes.",
+    manifesto_p2: "Opinions are expressed through decentralized market participation, not surveys, narratives, or influence.",
+    manifesto_p3: "This platform exists to observe how global sentiment emerges — freely, anonymously, and without intermediaries."
   },
 
   pt: {
-    intro_title: "Opinião Política",
+    intro_title: "Political Opinion",
     intro_p1: "O mundo é moldado por decisões políticas, mas a opinião pública muitas vezes permanece invisível ou distorcida.",
-    intro_p2: "Opinião Política é uma plataforma neutra que revela o sentimento público por meio da compra e venda de criptomoedas.",
-    intro_p3: "Cada transação representa uma perspectiva individual sincera, expressa livremente.",
+    intro_p2: "Political Opinion é uma plataforma neutra que revela o sentimento público por meio da compra e venda de criptomoedas.",
+    intro_p3: "Cada transação representa uma perspectiva individual e sincera.",
     intro_h2_1: "Neutralidade",
     intro_p4: "Sem ideologias. Sem endossos. Sem influência.",
     intro_h2_2: "Como Funciona",
-    intro_p5: "Leitores expressam sua opinião negociando ativos digitais.",
+    intro_p5: "Os leitores expressam sua opinião negociando ativos digitais ligados a eventos globais.",
     note: "Observação, não influência.",
-    ru_title: "Rússia × Ucrânia",
-    ru_p1: "O conflito entre Rússia e Ucrânia representa uma das maiores crises geopolíticas do século XXI.",
-    ru_p2: "A plataforma não endossa posições. Apenas observa o sentimento público.",
-    hi_title: "Hamas × Israel",
-    hi_p1: "O conflito Israel–Hamas tem raízes em décadas de tensões políticas.",
-    hi_p2: "Inclui questões de segurança, governança e direito internacional.",
-    hi_p3: "A plataforma não promove narrativas."
+
+    manifesto_title: "Manifesto",
+    manifesto_p1: "Political Opinion é uma plataforma de observação. Não promove ideologias, candidatos ou resultados.",
+    manifesto_p2: "As opiniões são expressas por meio da participação em mercados descentralizados, não por pesquisas ou narrativas.",
+    manifesto_p3: "Esta plataforma existe para observar como o sentimento global emerge — livremente, anonimamente e sem intermediários."
   },
 
   es: {
-    intro_title: "Opinión Política",
-    intro_p1: "El mundo está moldeado por decisiones políticas, pero la opinión pública a menudo permanece invisible.",
-    intro_p2: "Opinión Política es una plataforma neutral basada en criptomonedas.",
-    intro_p3: "Cada transacción representa una perspectiva individual.",
+    intro_title: "Political Opinion",
+    intro_p1: "El mundo está moldeado por decisiones políticas, pero la opinión pública suele permanecer invisible o distorsionada.",
+    intro_p2: "Political Opinion es una plataforma neutral que revela el sentimiento público a través del comercio de criptomonedas.",
+    intro_p3: "Cada transacción representa una perspectiva individual sincera.",
     intro_h2_1: "Neutralidad",
-    intro_p4: "Sin ideologías. Sin influencia.",
+    intro_p4: "Sin ideologías. Sin respaldos. Sin influencia.",
     intro_h2_2: "Cómo Funciona",
-    intro_p5: "Los lectores expresan su opinión mediante activos digitales.",
+    intro_p5: "Los lectores expresan su opinión negociando activos digitales vinculados a eventos globales.",
     note: "Observación, no influencia.",
-    ru_title: "Rusia × Ucrania",
-    ru_p1: "El conflicto representa una crisis geopolítica clave.",
-    ru_p2: "La plataforma observa el sentimiento público.",
-    hi_title: "Hamas × Israel",
-    hi_p1: "Conflicto arraigado en décadas de tensión.",
-    hi_p2: "Incluye seguridad y derecho internacional.",
-    hi_p3: "No promueve narrativas."
+
+    manifesto_title: "Manifiesto",
+    manifesto_p1: "Political Opinion es una plataforma de observación. No promueve ideologías, candidatos ni resultados.",
+    manifesto_p2: "Las opiniones se expresan mediante la participación en mercados descentralizados, no encuestas ni narrativas.",
+    manifesto_p3: "Esta plataforma existe para observar cómo surge el sentimiento global — libre, anónimo y sin intermediarios."
   },
 
   fr: {
-    intro_title: "Opinion Politique",
-    intro_p1: "Le monde est façonné par des décisions politiques.",
-    intro_p2: "Une plateforme neutre basée sur les cryptomonnaies.",
-    intro_p3: "Chaque transaction reflète une opinion individuelle.",
+    intro_title: "Political Opinion",
+    intro_p1: "Le monde est façonné par des décisions politiques, mais l’opinion publique reste souvent invisible ou déformée.",
+    intro_p2: "Political Opinion est une plateforme neutre qui révèle le sentiment public via le commerce de cryptomonnaies.",
+    intro_p3: "Chaque transaction représente une perspective individuelle sincère.",
     intro_h2_1: "Neutralité",
-    intro_p4: "Sans idéologie.",
-    intro_h2_2: "Fonctionnement",
-    intro_p5: "Expression via actifs numériques.",
+    intro_p4: "Aucune idéologie. Aucun soutien. Aucune influence.",
+    intro_h2_2: "Comment ça marche",
+    intro_p5: "Les lecteurs expriment leur opinion en échangeant des actifs numériques liés à des événements mondiaux.",
     note: "Observation, pas influence.",
-    ru_title: "Russie × Ukraine",
-    ru_p1: "Une crise géopolitique majeure.",
-    ru_p2: "Observation du sentiment public.",
-    hi_title: "Hamas × Israël",
-    hi_p1: "Conflit de longue date.",
-    hi_p2: "Sécurité et droit international.",
-    hi_p3: "Aucune promotion narrative."
+
+    manifesto_title: "Manifeste",
+    manifesto_p1: "Political Opinion est une plateforme d’observation. Elle ne promeut aucune idéologie, candidat ou résultat.",
+    manifesto_p2: "Les opinions s’expriment par la participation à des marchés décentralisés, pas par des sondages ou récits.",
+    manifesto_p3: "Cette plateforme existe pour observer l’émergence du sentiment mondial — librement, anonymement et sans intermédiaires."
   },
 
   zh: {
     intro_title: "政治观点",
-    intro_p1: "世界由政治决策塑造。",
-    intro_p2: "一个基于加密货币的中立平台。",
-    intro_p3: "每一笔交易代表个人观点。",
+    intro_p1: "世界由政治决策塑造，但公众舆论往往被忽视或扭曲。",
+    intro_p2: "Political Opinion 是一个通过加密货币交易来揭示公众情绪的中立平台。",
+    intro_p3: "每一笔交易都代表着真实而独立的个人观点。",
     intro_h2_1: "中立性",
-    intro_p4: "无意识形态。",
+    intro_p4: "无意识形态。无背书。无影响。",
     intro_h2_2: "运作方式",
-    intro_p5: "通过数字资产表达观点。",
+    intro_p5: "读者通过交易与全球事件相关的数字资产来表达观点。",
     note: "观察，而非影响。",
-    ru_title: "俄罗斯 × 乌克兰",
-    ru_p1: "重大的地缘政治危机。",
-    ru_p2: "观察公众情绪。",
-    hi_title: "哈马斯 × 以色列",
-    hi_p1: "长期冲突。",
-    hi_p2: "涉及安全与国际法。",
-    hi_p3: "不推广立场。"
+
+    manifesto_title: "宣言",
+    manifesto_p1: "Political Opinion 是一个观察平台，不推广任何意识形态、候选人或结果。",
+    manifesto_p2: "观点通过去中心化市场参与表达，而非调查、叙事或引导。",
+    manifesto_p3: "该平台用于观察全球情绪如何自由、匿名且无中介地形成。"
   }
 };
+
+/* ===== LANGUAGE SWITCH ===== */
+document.querySelectorAll(".language-switcher img").forEach(flag => {
+  flag.addEventListener("click", () => {
+    const lang = flag.dataset.lang;
+    setLanguage(lang);
+  });
+});
 
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      el.innerText = translations[lang][key];
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
     }
   });
-  localStorage.setItem("lang", lang);
 }
-
-setLanguage(localStorage.getItem("lang") || "en");
-
-document.querySelectorAll(".language-switcher img").forEach(img => {
-  img.addEventListener("click", () => {
-    setLanguage(img.dataset.lang);
-  });
-});
