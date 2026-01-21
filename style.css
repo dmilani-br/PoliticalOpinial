@@ -6,9 +6,9 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #0f172a, #000);
+  background: #000;
   color: #e5e7eb;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
 /* TOP BAR */
@@ -28,12 +28,6 @@ body {
   color: #e5e7eb;
   border: none;
   border-radius: 14px;
-  cursor: pointer;
-}
-
-.language-switcher button:hover,
-.manifesto-btn:hover {
-  background: rgba(51,65,85,0.9);
 }
 
 /* MANIFESTO */
@@ -49,7 +43,6 @@ body {
   padding: 18px;
   background: rgba(15,23,42,0.95);
   border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
   display: none;
 }
 
@@ -57,46 +50,49 @@ body {
   display: block;
 }
 
-.manifesto-popup h3 {
-  text-align: center;
-  margin-bottom: 10px;
+/* SLIDES */
+.slides {
+  height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
-/* CONTENT */
-.container {
-  display: flex;
+.slide {
+  height: 100vh;
+  width: 100%;
+  display: none;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
 }
 
+.slide.active {
+  display: flex;
+}
+
+/* TEXT BOX */
 .text-box {
   max-width: 720px;
   padding: 40px;
   background: rgba(15,23,42,0.88);
   border-radius: 18px;
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.8),
-    inset 0 0 0 1px rgba(255,255,255,0.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
 }
 
 h1 {
   text-align: center;
-  font-size: 34px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 h2 {
   text-align: center;
-  margin-top: 26px;
-  margin-bottom: 10px;
+  margin: 24px 0 10px;
   color: #c7d2fe;
 }
 
 p {
   font-size: 17px;
   line-height: 1.7;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .note {
