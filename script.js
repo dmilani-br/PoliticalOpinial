@@ -1,3 +1,6 @@
+/*************************
+ * TRANSLATIONS
+ *************************/
 const translations = {
   en: {
     manifesto_btn: "Manifesto",
@@ -90,22 +93,11 @@ const translations = {
   }
 };
 
-/* ===== LANGUAGE SWITCH ===== */
+/*************************
+ * LANGUAGE SWITCH
+ *************************/
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-  localStorage.setItem("lang", lang);
-}
-
-document.querySelectorAll(".language-switcher img").forEach(flag => {
-  flag.addEventListener("click", () => {
-    setLanguage(flag.dataset.lang);
-  });
-});
-
-/* INIT */
-setLanguage(localStorage.getItem("lang") || "en");
+      el.textCon
