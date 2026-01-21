@@ -100,4 +100,63 @@ function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (translations[lang] && translations[lang][key]) {
-      el.textCon
+      el.textContent = translations[lang][key];
+    }
+  });
+  localStorage.setItem("lang", lang);
+}
+
+document.querySelectorAll(".language-switcher img").forEach(flag => {
+  flag.addEventListener("click", () => {
+    setLanguage(flag.dataset.lang);
+  });
+});
+
+/*************************
+ * SLIDES NAVIGATION
+ *************************/
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+let isScrolling = false;
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+function nextSlide() {
+  if (currentSlide < slides.length - 1) {
+    currentSlide++;
+    showSlide(currentSlide);
+  }
+}
+
+function prevSlide() {
+  if (currentSlide > 0) {
+    currentSlide--;
+    showSlide(currentSlide);
+  }
+}
+
+/* SCROLL */
+window.addEventListener("wheel", e => {
+  if (isScrolling) return;
+  isScrolling = true;
+
+  if (e.deltaY > 0) nextSlide();
+  else prevSlide();
+
+  setTimeout(() => (isScrolling = false), 900);
+});
+
+/* KEYBOARD */
+window.addEventListener("keydown", e => {
+  if (e.key === "ArrowDown" || e.key === "ArrowRight") nextSlide();
+  if (e.key === "ArrowUp" || e.key === "ArrowLeft") prevSlide();
+});
+
+/*************************
+ * INIT
+ *************************/
+showSlide(currentSlide);
+setLanguage(localStorage.getItem("lang") || "en");
