@@ -1,116 +1,203 @@
-/* ================= TRANSLATIONS ================= */
-
-const translations = {
-  en: {
-    manifesto_btn: "Manifesto",
-    manifesto_title: "Manifesto",
-    manifesto_p1: "Political Opinion is an observational platform. It does not promote ideologies, candidates, or outcomes.",
-    manifesto_p2: "Opinions are expressed through decentralized market participation, not surveys, narratives, or influence.",
-    manifesto_p3: "This platform exists to observe how global sentiment emerges — freely, anonymously, and without intermediaries.",
-
-    intro_title: "Political Opinion",
-    intro_p1: "The world is shaped by political decisions, yet public opinion often remains invisible or distorted.",
-    intro_p2: "Political Opinion is a neutral platform that reveals public sentiment through the buying and selling of cryptocurrencies.",
-    intro_p3: "Each transaction represents a sincere individual perspective.",
-    intro_h2_1: "Neutrality",
-    intro_p4: "No ideologies. No endorsements. No influence.",
-    intro_h2_2: "How It Works",
-    intro_p5: "Readers express their opinion by trading digital assets linked to global events.",
-    note: "Observation, not influence.",
-
-    conflict_ru_title: "Russia × Ukraine",
-    conflict_ru_p1: "One of the most significant geopolitical crises of the 21st century.",
-    conflict_ru_p2: "Public sentiment is observed through decentralized markets.",
-
-    conflict_hi_title: "Hamas × Israel",
-    conflict_hi_p1: "A conflict rooted in decades of political, territorial and humanitarian tension.",
-    conflict_hi_p2: "This platform observes sentiment without promoting narratives."
-  },
-
-  pt: {
-    manifesto_btn: "Manifesto",
-    manifesto_title: "Manifesto",
-    manifesto_p1: "Political Opinion é uma plataforma de observação. Não promove ideologias, candidatos ou resultados.",
-    manifesto_p2: "As opiniões são expressas por meio da participação em mercados descentralizados, não por pesquisas ou narrativas.",
-    manifesto_p3: "Esta plataforma existe para observar como o sentimento global emerge — livremente, anonimamente e sem intermediários.",
-
-    intro_title: "Political Opinion",
-    intro_p1: "O mundo é moldado por decisões políticas, mas a opinião pública muitas vezes permanece invisível ou distorcida.",
-    intro_p2: "Political Opinion é uma plataforma neutra que revela o sentimento público por meio da compra e venda de criptomoedas.",
-    intro_p3: "Cada transação representa uma perspectiva individual e sincera.",
-    intro_h2_1: "Neutralidade",
-    intro_p4: "Sem ideologias. Sem endossos. Sem influência.",
-    intro_h2_2: "Como Funciona",
-    intro_p5: "Os leitores expressam sua opinião negociando ativos digitais ligados a eventos globais.",
-    note: "Observação, não influência.",
-
-    conflict_ru_title: "Rússia × Ucrânia",
-    conflict_ru_p1: "Uma das crises geopolíticas mais significativas do século XXI.",
-    conflict_ru_p2: "O sentimento público é observado por meio de mercados descentralizados.",
-
-    conflict_hi_title: "Hamas × Israel",
-    conflict_hi_p1: "Um conflito enraizado em décadas de tensões políticas, territoriais e humanitárias.",
-    conflict_hi_p2: "Esta plataforma observa o sentimento sem promover narrativas."
-  }
-};
-
-/* ================= LANGUAGE ================= */
-
-function setLanguage(lang) {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.dataset.i18n;
-    if (translations[lang]?.[key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-  localStorage.setItem("lang", lang);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-document.querySelectorAll(".language-switcher img").forEach(flag => {
-  flag.addEventListener("click", () => {
-    setLanguage(flag.dataset.lang);
-  });
-});
-
-setLanguage(localStorage.getItem("lang") || "en");
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: #e5e7eb;
+}
 
 /* ================= SLIDES ================= */
-
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-let isScrolling = false;
-
-function showSlide(index) {
-  slides.forEach(slide => slide.classList.remove("active"));
-  slides[index].classList.add("active");
+.slides {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }
 
-function nextSlide() {
-  if (currentSlide < slides.length - 1) {
-    currentSlide++;
-    showSlide(currentSlide);
-  }
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
 }
 
-function prevSlide() {
-  if (currentSlide > 0) {
-    currentSlide--;
-    showSlide(currentSlide);
-  }
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 5;
 }
 
-/* Mouse wheel */
-window.addEventListener("wheel", e => {
-  if (isScrolling) return;
-  isScrolling = true;
+/* INTRO */
+.intro {
+  background: url("assets/jornal.png") center/cover no-repeat;
+}
 
-  e.deltaY > 0 ? nextSlide() : prevSlide();
+/* BACKGROUND SPLIT */
+.background {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 0;
+}
 
-  setTimeout(() => isScrolling = false, 900);
-});
+.bg {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(12px) brightness(0.65);
+}
 
-/* Keyboard */
-window.addEventListener("keydown", e => {
-  if (e.key === "ArrowDown" || e.key === "ArrowRight") nextSlide();
-  if (e.key === "ArrowUp" || e.key === "ArrowLeft") prevSlide();
-});
+/* IMAGES */
+.bg.putin { background-image: url("assets/putin.png"); }
+.bg.zelensky { background-image: url("assets/zelensky.png"); }
+.bg.hamas { background-image: url("assets/hamas.png"); }
+.bg.israel { background-image: url("assets/israel.jpeg"); }
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5,10,30,0.65);
+  z-index: 1;
+}
+
+/* ================= TEXT BOX ================= */
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 720px;
+  padding: 42px;
+  background: rgba(15,23,42,0.88);
+  border-radius: 16px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(255,255,255,0.06);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slide.active .text-box {
+  opacity: 1;
+}
+
+.text-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.12),
+    0 0 35px rgba(99,102,241,0.18),
+    0 0 70px rgba(99,102,241,0.08);
+}
+
+/* TEXT */
+h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 24px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 26px;
+  color: #c7d2fe;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.note {
+  text-align: center;
+  font-style: italic;
+  color: #9ca3af;
+}
+
+/* ================= LANGUAGE + MANIFESTO ================= */
+.language-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.language-switcher img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-switcher img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+/* MANIFESTO */
+.manifesto-container {
+  position: relative;
+}
+
+.manifesto-btn {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(20,30,60,0.8);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.manifesto-btn:hover {
+  background: rgba(30,50,100,0.9);
+}
+
+.manifesto-popup {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 320px;
+  padding: 20px;
+  background: rgba(10,20,45,0.95);
+  border-radius: 14px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.manifesto-container:hover .manifesto-popup {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.manifesto-popup h3 {
+  text-align: center;
+  margin-bottom: 12px;
+}
