@@ -9,18 +9,19 @@
 <body>
 
 <!-- LANGUAGE + MANIFESTO -->
-<div class="language-wrapper">
+<div class="top-bar">
 
   <div class="language-switcher">
-    <img src="assets/bandeira-brasil.png" data-lang="pt">
-    <img src="assets/bandeira-inglaterra.png" data-lang="en">
-    <img src="assets/bandeira-espanha.png" data-lang="es">
-    <img src="assets/bandeira-franca.png" data-lang="fr">
-    <img src="assets/bandeira-china.png" data-lang="zh">
+    <button data-lang="en">EN</button>
+    <button data-lang="pt">PT</button>
+    <button data-lang="es">ES</button>
+    <button data-lang="fr">FR</button>
+    <button data-lang="zh">中文</button>
   </div>
 
   <div class="manifesto-container">
-    <div class="manifesto-btn" data-i18n="manifesto_btn">Manifesto</div>
+    <button class="manifesto-btn" data-i18n="manifesto_btn">Manifesto</button>
+
     <div class="manifesto-popup">
       <h3 data-i18n="manifesto_title">Manifesto</h3>
       <p data-i18n="manifesto_p1"></p>
@@ -32,56 +33,24 @@
 
 </div>
 
-<div class="slides">
+<!-- MAIN CONTENT -->
+<div class="container">
+  <div class="text-box">
+    <h1 data-i18n="intro_title"></h1>
+    <p data-i18n="intro_p1"></p>
+    <p data-i18n="intro_p2"></p>
+    <p data-i18n="intro_p3"></p>
 
-  <!-- SLIDE 1 -->
-  <section class="slide active intro">
-    <div class="overlay"></div>
-    <div class="text-box">
-      <h1 data-i18n="intro_title"></h1>
-      <p data-i18n="intro_p1"></p>
-      <p data-i18n="intro_p2"></p>
-      <p data-i18n="intro_p3"></p>
-      <h2 data-i18n="intro_h2_1"></h2>
-      <p data-i18n="intro_p4"></p>
-      <h2 data-i18n="intro_h2_2"></h2>
-      <p data-i18n="intro_p5"></p>
-      <p class="note" data-i18n="note"></p>
-    </div>
-  </section>
+    <h2 data-i18n="intro_h2_1"></h2>
+    <p data-i18n="intro_p4"></p>
 
-  <!-- SLIDE 2 -->
-  <section class="slide conflict">
-    <div class="background">
-      <div class="bg putin"></div>
-      <div class="bg zelensky"></div>
-    </div>
-    <div class="overlay"></div>
-    <div class="text-box">
-      <h1 data-i18n="conflict_ru_title"></h1>
-      <p data-i18n="conflict_ru_p1"></p>
-      <p data-i18n="conflict_ru_p2"></p>
-      <p class="note" data-i18n="note"></p>
-    </div>
-  </section>
+    <h2 data-i18n="intro_h2_2"></h2>
+    <p data-i18n="intro_p5"></p>
 
-  <!-- SLIDE 3 -->
-  <section class="slide conflict">
-    <div class="background">
-      <div class="bg hamas"></div>
-      <div class="bg israel"></div>
-    </div>
-    <div class="overlay"></div>
-    <div class="text-box">
-      <h1 data-i18n="conflict_hi_title"></h1>
-      <p data-i18n="conflict_hi_p1"></p>
-      <p data-i18n="conflict_hi_p2"></p>
-      <p class="note" data-i18n="note"></p>
-    </div>
-  </section>
-
+    <p class="note" data-i18n="note"></p>
+  </div>
 </div>
 
-<script src="script.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>
