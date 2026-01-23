@@ -11,11 +11,11 @@ body {
   color: #e5e7eb;
 }
 
-/* ================= SLIDES ================= */
+/* SLIDES */
 .slides {
-  position: relative;
   width: 100vw;
   height: 100vh;
+  position: relative;
 }
 
 .slide {
@@ -23,7 +23,7 @@ body {
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 1.2s ease;
+  transition: opacity 1s ease;
 }
 
 .slide.active {
@@ -42,32 +42,32 @@ body {
   position: absolute;
   inset: 0;
   display: flex;
-  z-index: 0;
 }
 
 .bg {
   width: 50%;
-  height: 100%;
   background-size: cover;
   background-position: center;
-  filter: blur(12px) brightness(0.7);
+  filter: blur(12px) brightness(0.6);
 }
 
-/* IMAGES */
 .bg.putin { background-image: url("assets/putin.png"); }
 .bg.zelensky { background-image: url("assets/zelensky.png"); }
 .bg.hamas { background-image: url("assets/hamas.png"); }
 .bg.israel { background-image: url("assets/israel.jpeg"); }
+.bg.usa { background-image: url("assets/eua.jpeg"); }
+.bg.china { background-image: url("assets/china.jpeg"); }
+.bg.ira { background-image: url("assets/ira.jpeg"); }
+.bg.iraq { background-image: url("assets/iraq.jpeg"); }
 
 /* OVERLAY */
 .overlay {
   position: absolute;
   inset: 0;
   background: rgba(5,10,30,0.65);
-  z-index: 1;
 }
 
-/* ================= FLOATING TEXT (STATIC + BORDAS) ================= */
+/* TEXT BOX */
 .text-box {
   position: absolute;
   top: 50%;
@@ -75,99 +75,32 @@ body {
   transform: translate(-50%, -50%);
   max-width: 720px;
   padding: 42px;
-
   background: rgba(15,23,42,0.88);
   border-radius: 16px;
-
-  /* profundidade */
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.8),
-    0 0 0 1px rgba(255,255,255,0.06);
-
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
   z-index: 2;
-  opacity: 0;
-  transition: opacity 0.8s ease;
 }
 
-/* ATIVO */
-.slide.active .text-box {
-  opacity: 1;
-}
+h1 { text-align: center; margin-bottom: 20px; }
+h2 { text-align: center; margin: 22px 0 10px; color: #c7d2fe; }
+p { line-height: 1.7; margin-bottom: 14px; }
+.note { text-align: center; font-style: italic; color: #9ca3af; }
 
-/* ===== BORDAS FLUTUANTES / LUMINOSAS ===== */
-.text-box::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  pointer-events: none;
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.12),
-    0 0 35px rgba(99,102,241,0.18),
-    0 0 70px rgba(99,102,241,0.08);
-
-  opacity: 1;
-}
-
-/* TEXT */
-h1 {
-  text-align: center;
-  font-size: 34px;
-  margin-bottom: 24px;
-}
-
-h2 {
-  text-align: center;
-  font-size: 20px;
-  margin-top: 26px;
-  color: #c7d2fe;
-}
-
-p {
-  font-size: 17px;
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-.note {
-  text-align: center;
-  font-style: italic;
-  color: #9ca3af;
-}
-
-/* ================= LANGUAGE + MANIFESTO ================= */
+/* LANGUAGE + MANIFESTO */
 .language-wrapper {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 999;
   display: flex;
-  align-items: center;
   gap: 16px;
-}
-
-.language-switcher {
-  display: flex;
-  gap: 10px;
+  z-index: 999;
 }
 
 .language-switcher img {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.language-switcher img:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 12px rgba(255,255,255,0.6);
-}
-
-/* MANIFESTO */
-.manifesto-container {
-  position: relative;
 }
 
 .manifesto-btn {
@@ -175,36 +108,22 @@ p {
   border-radius: 20px;
   background: rgba(20,30,60,0.8);
   cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s ease;
-}
-
-.manifesto-btn:hover {
-  background: rgba(30,50,100,0.9);
 }
 
 .manifesto-popup {
   position: absolute;
-  top: 48px;
+  top: 45px;
   right: 0;
   width: 320px;
   padding: 20px;
   background: rgba(10,20,45,0.95);
   border-radius: 14px;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.8);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .manifesto-container:hover .manifesto-popup {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
-}
-
-.manifesto-popup h3 {
-  text-align: center;
-  margin-bottom: 12px;
 }
