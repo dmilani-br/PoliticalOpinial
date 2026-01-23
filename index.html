@@ -1,69 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Political Opinion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- LANGUAGE + MANIFESTO -->
+  <!-- ================= LANGUAGE SWITCHER + MANIFESTO ================= -->
   <div class="language-wrapper">
 
+    <!-- Language Flags -->
     <div class="language-switcher">
-      <img src="assets/bandeira-brasil.png" data-lang="pt" alt="Português">
-      <img src="assets/bandeira-inglaterra.png" data-lang="en" alt="English">
-      <img src="assets/bandeira-espanha.png" data-lang="es" alt="Español">
-      <img src="assets/bandeira-franca.png" data-lang="fr" alt="Français">
-      <img src="assets/bandeira-china.png" data-lang="zh" alt="中文">
+      <img src="assets/bandeira-brasil.png" data-lang="pt" alt="Português" />
+      <img src="assets/bandeira-inglaterra.png" data-lang="en" alt="English" />
+      <img src="assets/bandeira-espanha.png" data-lang="es" alt="Español" />
+      <img src="assets/bandeira-franca.png" data-lang="fr" alt="Français" />
+      <img src="assets/bandeira-china.png" data-lang="zh" alt="中文" />
     </div>
 
-    <div class="manifesto-container">
-      <div class="manifesto-btn" data-i18n="manifesto_btn">
-        Manifesto
-      </div>
+<div class="manifesto-container">
+  <div class="manifesto-btn" data-i18n="manifesto_btn">Manifesto</div>
 
-      <div class="manifesto-popup">
-        <h3 data-i18n="manifesto_title">Manifesto</h3>
+  <div class="manifesto-popup">
+    <h3 data-i18n="manifesto_title">Manifesto</h3>
 
-        <p data-i18n="manifesto_p1">
-          Political Opinion is an observational platform.
-        </p>
+    <p data-i18n="manifesto_p1">
+      Political Opinion is an observational platform.
+    </p>
 
-        <p data-i18n="manifesto_p2">
-          Opinions are expressed through decentralized market participation.
-        </p>
+    <p data-i18n="manifesto_p2">
+      Opinions are expressed through decentralized market participation.
+    </p>
 
-        <p data-i18n="manifesto_p3">
-          This platform exists to observe how global sentiment emerges.
-        </p>
+    <p data-i18n="manifesto_p3">
+      This platform exists to observe how global sentiment emerges.
+    </p>
 
-        <p class="note" data-i18n="note">
-          Observation, not influence.
-        </p>
-      </div>
-    </div>
-
+    <p class="note" data-i18n="note">Observation, not influence.</p>
   </div>
+</div>
 
-  <!-- SLIDES -->
+  <!-- ================= SLIDES ================= -->
   <div class="slides">
 
-    <!-- SLIDE 1 -->
+    <!-- ========== SLIDE 1 : INTRO ========== -->
     <section class="slide active intro">
       <div class="overlay"></div>
 
-      <div class="text-box">
+      <div class="text-box floating">
         <h1 data-i18n="intro_title">Political Opinion</h1>
 
         <p data-i18n="intro_p1">
-          The world is shaped by political decisions, yet public opinion often remains invisible or distorted.
+          The world is shaped by political decisions,
+          yet public opinion often remains invisible or distorted.
         </p>
 
         <p data-i18n="intro_p2">
-          Political Opinion is a neutral platform that reveals public sentiment through the buying and selling of cryptocurrencies.
+          Political Opinion is a neutral platform that reveals public sentiment
+          through the buying and selling of cryptocurrencies.
         </p>
 
         <p data-i18n="intro_p3">
@@ -79,16 +78,15 @@
         <h2 data-i18n="intro_h2_2">How It Works</h2>
 
         <p data-i18n="intro_p5">
-          Readers express their opinion by trading digital assets linked to global events.
+          Readers express their opinion by trading digital assets
+          linked to global events.
         </p>
 
-        <p class="note" data-i18n="note">
-          Observation, not influence.
-        </p>
+        <p class="note" data-i18n="note">Observation, not influence.</p>
       </div>
     </section>
 
-    <!-- SLIDE 2 -->
+    <!-- ========== SLIDE 2 : RUSSIA x UKRAINE ========== -->
     <section class="slide conflict">
       <div class="background">
         <div class="bg left putin"></div>
@@ -97,24 +95,23 @@
 
       <div class="overlay"></div>
 
-      <div class="text-box">
-        <h1 data-i18n="conflict_ru_title">Russia × Ukraine</h1>
+      <div class="text-box floating">
+        <h1>Russia × Ukraine</h1>
 
-        <p data-i18n="conflict_ru_p1">
-          One of the most significant geopolitical crises of the 21st century.
+        <p>
+          One of the most significant geopolitical crises
+          of the 21st century.
         </p>
 
-        <p data-i18n="conflict_ru_p2">
+        <p>
           Public sentiment is observed through decentralized markets.
         </p>
 
-        <p class="note" data-i18n="note">
-          Observation, not influence.
-        </p>
+        <p class="note">Observation, not influence.</p>
       </div>
     </section>
 
-    <!-- SLIDE 3 -->
+    <!-- ========== SLIDE 3 : HAMAS x ISRAEL ========== -->
     <section class="slide conflict">
       <div class="background">
         <div class="bg left hamas"></div>
@@ -123,26 +120,28 @@
 
       <div class="overlay"></div>
 
-      <div class="text-box">
-        <h1 data-i18n="conflict_hi_title">Hamas × Israel</h1>
+      <div class="text-box floating">
+        <h1>Hamas × Israel</h1>
 
-        <p data-i18n="conflict_hi_p1">
-          A conflict rooted in decades of political, territorial and humanitarian tension.
+        <p>
+          A conflict rooted in decades of political,
+          territorial and humanitarian tension.
         </p>
 
-        <p data-i18n="conflict_hi_p2">
+        <p>
           This platform observes sentiment without promoting narratives.
         </p>
 
-        <p class="note" data-i18n="note">
-          Observation, not influence.
-        </p>
+        <p class="note">Observation, not influence.</p>
       </div>
     </section>
 
   </div>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
 
 </body>
 </html>
+
+
