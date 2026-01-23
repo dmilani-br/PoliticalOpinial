@@ -1,5 +1,3 @@
-
-/* ================= RESET / BASE ================= */
 * {
   margin: 0;
   padding: 0;
@@ -34,12 +32,12 @@ body {
   z-index: 10;
 }
 
-/* ================= INTRO ================= */
+/* INTRO */
 .intro {
-  background: url("assets/jornal.png") center / cover no-repeat;
+  background: url("assets/jornal.png") center/cover no-repeat;
 }
 
-/* ================= BACKGROUND SPLIT ================= */
+/* BACKGROUND SPLIT */
 .background {
   position: absolute;
   inset: 0;
@@ -55,32 +53,21 @@ body {
   filter: blur(12px) brightness(0.7);
 }
 
-/* Background images */
-.bg.putin {
-  background-image: url("assets/putin.png");
-}
+/* IMAGES */
+.bg.putin { background-image: url("assets/putin.png"); }
+.bg.zelensky { background-image: url("assets/zelensky.png"); }
+.bg.hamas { background-image: url("assets/hamas.png"); }
+.bg.israel { background-image: url("assets/israel.jpeg"); }
 
-.bg.zelensky {
-  background-image: url("assets/zelensky.png");
-}
-
-.bg.hamas {
-  background-image: url("assets/hamas.png");
-}
-
-.bg.israel {
-  background-image: url("assets/israel.jpeg");
-}
-
-/* ================= OVERLAY ================= */
+/* OVERLAY */
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(5, 10, 30, 0.65);
+  background: rgba(5,10,30,0.65);
   z-index: 1;
 }
 
-/* ================= FLOATING TEXT BOX ================= */
+/* ================= FLOATING TEXT (STATIC + BORDAS) ================= */
 .text-box {
   position: absolute;
   top: 50%;
@@ -89,24 +76,25 @@ body {
   max-width: 720px;
   padding: 42px;
 
-  background: rgba(15, 23, 42, 0.88);
+  background: rgba(15,23,42,0.88);
   border-radius: 16px;
 
-  /* Profundidade */
+  /* profundidade */
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(255, 255, 255, 0.06);
+    0 30px 80px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(255,255,255,0.06);
 
   z-index: 2;
   opacity: 0;
   transition: opacity 0.8s ease;
 }
 
+/* ATIVO */
 .slide.active .text-box {
   opacity: 1;
 }
 
-/* BORDAS FLUTUANTES / LUMINOSAS */
+/* ===== BORDAS FLUTUANTES / LUMINOSAS ===== */
 .text-box::before {
   content: "";
   position: absolute;
@@ -115,12 +103,14 @@ body {
   pointer-events: none;
 
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-    0 0 35px rgba(99, 102, 241, 0.18),
-    0 0 70px rgba(99, 102, 241, 0.08);
+    inset 0 0 0 1px rgba(255,255,255,0.12),
+    0 0 35px rgba(99,102,241,0.18),
+    0 0 70px rgba(99,102,241,0.08);
+
+  opacity: 1;
 }
 
-/* ================= TEXT ================= */
+/* TEXT */
 h1 {
   text-align: center;
   font-size: 34px;
@@ -146,13 +136,12 @@ p {
   color: #9ca3af;
 }
 
-/* ================= LANGUAGE SWITCHER ================= */
+/* ================= LANGUAGE + MANIFESTO ================= */
 .language-wrapper {
   position: fixed;
   top: 20px;
   right: 20px;
   z-index: 999;
-
   display: flex;
   align-items: center;
   gap: 16px;
@@ -168,16 +157,15 @@ p {
   height: 36px;
   border-radius: 50%;
   cursor: pointer;
-
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .language-switcher img:hover {
   transform: scale(1.15);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 12px rgba(255,255,255,0.6);
 }
 
-/* ================= MANIFESTO ================= */
+/* MANIFESTO */
 .manifesto-container {
   position: relative;
 }
@@ -185,29 +173,25 @@ p {
 .manifesto-btn {
   padding: 8px 14px;
   border-radius: 20px;
-  background: rgba(20, 30, 60, 0.8);
+  background: rgba(20,30,60,0.8);
   cursor: pointer;
   font-size: 14px;
   transition: background 0.3s ease;
 }
 
 .manifesto-btn:hover {
-  background: rgba(30, 50, 100, 0.9);
+  background: rgba(30,50,100,0.9);
 }
 
 .manifesto-popup {
   position: absolute;
   top: 48px;
   right: 0;
-
   width: 320px;
   padding: 20px;
-
-  background: rgba(10, 20, 45, 0.95);
+  background: rgba(10,20,45,0.95);
   border-radius: 14px;
-
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
-
+  box-shadow: 0 30px 70px rgba(0,0,0,0.8);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
@@ -224,4 +208,3 @@ p {
   text-align: center;
   margin-bottom: 12px;
 }
-
