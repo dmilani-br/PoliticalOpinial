@@ -1,92 +1,132 @@
-/* ================= TRANSLATIONS ================= */
+const slider = document.getElementById("slider");
+const boxTitle = document.getElementById("boxTitle");
+const boxText = document.getElementById("boxText");
+const boxNote = document.getElementById("boxNote");
+
+const manifestoBtn = document.getElementById("manifestoBtn");
+const manifestoModal = document.getElementById("manifestoModal");
+const closeManifesto = document.getElementById("closeManifesto");
+const manifestoTitle = document.getElementById("manifestoTitle");
+const manifestoText = document.getElementById("manifestoText");
+
+let currentLang = "en";
+let currentSlide = 0;
+
+const conflicts = [
+  { id: "hamas_israel", image: "assets/hamas.png" },
+  { id: "russia_ukraine", image: "assets/putin.png" },
+  { id: "usa_china", image: "assets/eua.jpeg" },
+  { id: "iran_israel", image: "assets/ira.jpeg" }
+];
 
 const translations = {
   en: {
-    manifesto_btn: "Manifesto",
-    manifesto_title: "Manifesto",
-    manifesto_p1: "Political Opinion is an observational platform.",
-    manifesto_p2: "Opinions are expressed through decentralized markets.",
-    manifesto_p3: "This platform exists to observe global sentiment.",
-    intro_title: "Political Opinion",
-    intro_p1: "The world is shaped by political decisions.",
-    intro_p2: "This platform observes public sentiment through markets.",
-    intro_h2_1: "Neutrality",
-    intro_p3: "No ideologies. No influence.",
-    conflict_ru_title: "Russia × Ukraine",
-    conflict_ru_p1: "A major geopolitical conflict of the 21st century.",
-    conflict_ru_p2: "Public sentiment is observed, not influenced.",
-    conflict_hi_title: "Hamas × Israel",
-    conflict_hi_p1: "A conflict rooted in decades of tension.",
-    conflict_hi_p2: "This platform remains neutral.",
-    note: "Observation, not influence."
+    manifestoTitle: "Manifesto",
+    manifestoText: "This platform observes global conflicts without influence.",
+    conflicts: {
+      hamas_israel: {
+        title: "Hamas × Israel",
+        text: "A conflict rooted in decades of tension.",
+        note: "Observation, not influence."
+      },
+      russia_ukraine: {
+        title: "Russia × Ukraine",
+        text: "A geopolitical confrontation reshaping Europe.",
+        note: "Observation, not influence."
+      },
+      usa_china: {
+        title: "USA × China",
+        text: "A dispute of power, economy and influence.",
+        note: "Observation, not influence."
+      },
+      iran_israel: {
+        title: "Iran × Israel",
+        text: "Indirect conflict through regional tensions.",
+        note: "Observation, not influence."
+      }
+    }
   },
 
   pt: {
-    manifesto_btn: "Manifesto",
-    manifesto_title: "Manifesto",
-    manifesto_p1: "Political Opinion é uma plataforma de observação.",
-    manifesto_p2: "As opiniões são expressas por mercados descentralizados.",
-    manifesto_p3: "A plataforma observa o sentimento global.",
-    intro_title: "Political Opinion",
-    intro_p1: "O mundo é moldado por decisões políticas.",
-    intro_p2: "A plataforma observa o sentimento público.",
-    intro_h2_1: "Neutralidade",
-    intro_p3: "Sem ideologias. Sem influência.",
-    conflict_ru_title: "Rússia × Ucrânia",
-    conflict_ru_p1: "Uma grande crise geopolítica.",
-    conflict_ru_p2: "O sentimento público é observado.",
-    conflict_hi_title: "Hamas × Israel",
-    conflict_hi_p1: "Conflito marcado por décadas de tensão.",
-    conflict_hi_p2: "A plataforma permanece neutra.",
-    note: "Observação, não influência."
+    manifestoTitle: "Manifesto",
+    manifestoText: "Esta plataforma observa conflitos globais sem influenciar.",
+    conflicts: {
+      hamas_israel: {
+        title: "Hamas × Israel",
+        text: "Um conflito enraizado em décadas de tensão.",
+        note: "Observação, não influência."
+      },
+      russia_ukraine: {
+        title: "Rússia × Ucrânia",
+        text: "Confronto geopolítico que redefine a Europa.",
+        note: "Observação, não influência."
+      },
+      usa_china: {
+        title: "EUA × China",
+        text: "Disputa de poder, economia e influência.",
+        note: "Observação, não influência."
+      },
+      iran_israel: {
+        title: "Irã × Israel",
+        text: "Conflito indireto por tensões regionais.",
+        note: "Observação, não influência."
+      }
+    }
   }
 };
 
-/* ================= LANGUAGE SWITCH ================= */
-
-function setLanguage(lang) {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.dataset.i18n;
-    if (translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
+/* ---------- RENDER ---------- */
+function renderSlides() {
+  slider.innerHTML = "";
+  conflicts.forEach(conflict => {
+    const slide = document.createElement("div");
+    slide.className = "slide";
+    slide.style.backgroundImage = `url(${conflict.image})`;
+    slider.appendChild(slide);
   });
-  localStorage.setItem("lang", lang);
 }
+
+function updateText() {
+  const conflict = conflicts[currentSlide];
+  const data = translations[currentLang].conflicts[conflict.id];
+
+  boxTitle.textContent = data.title;
+  boxText.textContent = data.text;
+  boxNote.textContent = data.note;
+
+  manifestoBtn.textContent = translations[currentLang].manifestoTitle;
+  manifestoTitle.textContent = translations[currentLang].manifestoTitle;
+  manifestoText.textContent = translations[currentLang].manifestoText;
+}
+
+function updateSlide() {
+  slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+  updateText();
+}
+
+/* ---------- CONTROLS ---------- */
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") {
+    currentSlide = (currentSlide + 1) % conflicts.length;
+    updateSlide();
+  }
+  if (e.key === "ArrowLeft") {
+    currentSlide =
+      (currentSlide - 1 + conflicts.length) % conflicts.length;
+    updateSlide();
+  }
+});
 
 document.querySelectorAll("[data-lang]").forEach(btn => {
   btn.addEventListener("click", () => {
-    setLanguage(btn.dataset.lang);
+    currentLang = btn.dataset.lang;
+    updateText();
   });
 });
 
-/* ================= SLIDES ================= */
+manifestoBtn.onclick = () => manifestoModal.classList.remove("hidden");
+closeManifesto.onclick = () => manifestoModal.classList.add("hidden");
 
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-let isScrolling = false;
-
-function showSlide(index) {
-  slides.forEach(s => s.classList.remove("active"));
-  slides[index].classList.add("active");
-}
-
-window.addEventListener("wheel", e => {
-  if (isScrolling) return;
-  isScrolling = true;
-  e.deltaY > 0 ? currentSlide++ : currentSlide--;
-  currentSlide = Math.max(0, Math.min(slides.length - 1, currentSlide));
-  showSlide(currentSlide);
-  setTimeout(() => isScrolling = false, 700);
-});
-
-window.addEventListener("keydown", e => {
-  if (e.key === "ArrowDown") currentSlide++;
-  if (e.key === "ArrowUp") currentSlide--;
-  currentSlide = Math.max(0, Math.min(slides.length - 1, currentSlide));
-  showSlide(currentSlide);
-});
-
-/* INIT */
-setLanguage(localStorage.getItem("lang") || "en");
-showSlide(currentSlide);
+/* ---------- INIT ---------- */
+renderSlides();
+updateSlide();
