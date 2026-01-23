@@ -1,149 +1,66 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
-  background: #000;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
   overflow: hidden;
-  color: #e5e7eb;
 }
 
-/* SLIDES */
-.slides {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease;
-}
-
-.slide.active {
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 10;
-}
-
-/* INTRO */
-.intro {
-  background: url("assets/jornal.png") center/cover no-repeat;
-}
-
-/* BACKGROUND */
-.background {
-  position: absolute;
-  inset: 0;
-  display: flex;
-}
-
-.bg {
-  width: 50%;
-  background-size: cover;
-  background-position: center;
-  filter: blur(12px) brightness(0.6);
-}
-
-.bg.putin { background-image: url("assets/putin.png"); }
-.bg.zelensky { background-image: url("assets/zelensky.png"); }
-.bg.hamas { background-image: url("assets/hamas.png"); }
-.bg.israel { background-image: url("assets/israel.jpeg"); }
-.bg.usa { background-image: url("assets/eua.jpeg"); }
-.bg.china { background-image: url("assets/china.jpeg"); }
-.bg.ira { background-image: url("assets/ira.jpeg"); }
-.bg.iraq { background-image: url("assets/iraq.jpeg"); }
-
-/* OVERLAY */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(5,10,30,0.65);
-}
-
-/* TEXT BOX */
-.text-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 720px;
-  padding: 42px;
-  background: rgba(15,23,42,0.88);
-  border-radius: 16px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
-}
-
-h1 { text-align: center; margin-bottom: 20px; }
-h2 { text-align: center; margin: 22px 0 10px; color: #c7d2fe; }
-p { line-height: 1.7; margin-bottom: 14px; }
-.note { text-align: center; font-style: italic; color: #9ca3af; }
-
-/* LANGUAGE + MANIFESTO */
 .language-wrapper {
   position: fixed;
   top: 20px;
   right: 20px;
-  display: flex;
-  gap: 16px;
-  z-index: 999;
+  z-index: 1000;
 }
 
-.language-switcher {
-  display: flex;
-  gap: 10px;
-}
-
-/* FLAG ANIMATION */
 .language-switcher img {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  width: 28px;
   cursor: pointer;
-  opacity: 0.6;
-  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  margin-left: 8px;
 }
 
-.language-switcher img:hover {
-  transform: scale(1.2);
-  opacity: 1;
-  box-shadow: 0 0 12px rgba(255,255,255,0.7);
+.manifesto-container {
+  margin-top: 10px;
+  text-align: right;
 }
 
-.language-switcher img.active {
-  opacity: 1;
-  transform: scale(1.25);
-  box-shadow: 0 0 16px rgba(99,102,241,0.9);
-}
-
-/* MANIFESTO */
 .manifesto-btn {
-  padding: 8px 14px;
-  border-radius: 20px;
-  background: rgba(20,30,60,0.8);
   cursor: pointer;
+  font-weight: bold;
 }
 
 .manifesto-popup {
-  position: absolute;
-  top: 45px;
-  right: 0;
-  width: 320px;
-  padding: 20px;
-  background: rgba(10,20,45,0.95);
-  border-radius: 14px;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.3s;
+  display: none;
+  background: rgba(0,0,0,0.85);
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
 }
 
 .manifesto-container:hover .manifesto-popup {
-  opacity: 1;
-  pointer-events: auto;
+  display: block;
+}
+
+.slides {
+  height: 100vh;
+}
+
+.slide {
+  height: 100vh;
+  position: relative;
+}
+
+.text-box {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  max-width: 500px;
+  background: rgba(0,0,0,0.55);
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.note {
+  opacity: 0.6;
+  font-size: 0.9em;
 }
