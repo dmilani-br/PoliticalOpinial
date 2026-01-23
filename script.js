@@ -1,111 +1,200 @@
-const translations = {
-  en: {
-    manifesto_btn: "Manifesto",
-    manifesto_title: "Manifesto",
-    manifesto_p1: "Political Opinion is an observational platform. It does not promote ideologies, candidates, or outcomes.",
-    manifesto_p2: "Opinions are expressed through decentralized market participation, not surveys, narratives, or influence.",
-    manifesto_p3: "This platform exists to observe how global sentiment emerges — freely, anonymously, and without intermediaries.",
-
-    intro_title: "Political Opinion",
-    intro_p1: "The world is shaped by political decisions, yet public opinion often remains invisible or distorted.",
-    intro_p2: "Political Opinion is a neutral platform that reveals public sentiment through the buying and selling of cryptocurrencies.",
-    intro_p3: "Each transaction represents a sincere individual perspective.",
-    intro_h2_1: "Neutrality",
-    intro_p4: "No ideologies. No endorsements. No influence.",
-    intro_h2_2: "How It Works",
-    intro_p5: "Readers express their opinion by trading digital assets linked to global events.",
-    note: "Observation, not influence."
-  },
-
-  pt: {
-    manifesto_btn: "Manifesto",
-    manifesto_title: "Manifesto",
-    manifesto_p1: "Political Opinion é uma plataforma de observação. Não promove ideologias, candidatos ou resultados.",
-    manifesto_p2: "As opiniões são expressas por meio da participação em mercados descentralizados, não por pesquisas ou narrativas.",
-    manifesto_p3: "Esta plataforma existe para observar como o sentimento global emerge — livremente, anonimamente e sem intermediários.",
-
-    intro_title: "Political Opinion",
-    intro_p1: "O mundo é moldado por decisões políticas, mas a opinião pública muitas vezes permanece invisível ou distorcida.",
-    intro_p2: "Political Opinion é uma plataforma neutra que revela o sentimento público por meio da compra e venda de criptomoedas.",
-    intro_p3: "Cada transação representa uma perspectiva individual e sincera.",
-    intro_h2_1: "Neutralidade",
-    intro_p4: "Sem ideologias. Sem endossos. Sem influência.",
-    intro_h2_2: "Como Funciona",
-    intro_p5: "Os leitores expressam sua opinião negociando ativos digitais ligados a eventos globais.",
-    note: "Observação, não influência."
-  },
-
-  es: {
-    manifesto_btn: "Manifiesto",
-    manifesto_title: "Manifiesto",
-    manifesto_p1: "Political Opinion es una plataforma de observación. No promueve ideologías, candidatos ni resultados.",
-    manifesto_p2: "Las opiniones se expresan mediante la participación en mercados descentralizados, no encuestas ni narrativas.",
-    manifesto_p3: "Esta plataforma existe para observar cómo surge el sentimiento global — libre, anónimo y sin intermediarios.",
-
-    intro_title: "Political Opinion",
-    intro_p1: "El mundo está moldeado por decisiones políticas.",
-    intro_p2: "Una plataforma neutral basada en criptomonedas.",
-    intro_p3: "Cada transacción representa una perspectiva individual.",
-    intro_h2_1: "Neutralidad",
-    intro_p4: "Sin ideologías. Sin influencia.",
-    intro_h2_2: "Cómo Funciona",
-    intro_p5: "Los lectores expresan su opinión mediante activos digitales.",
-    note: "Observación, no influencia."
-  },
-
-  fr: {
-    manifesto_btn: "Manifeste",
-    manifesto_title: "Manifeste",
-    manifesto_p1: "Political Opinion est une plateforme d’observation. Elle ne promeut aucune idéologie, candidat ou résultat.",
-    manifesto_p2: "Les opinions s’expriment par la participation à des marchés décentralisés, pas par des sondages ou récits.",
-    manifesto_p3: "Cette plateforme existe pour observer l’émergence du sentiment mondial — librement, anonymement et sans intermédiaires.",
-
-    intro_title: "Political Opinion",
-    intro_p1: "Le monde est façonné par des décisions politiques.",
-    intro_p2: "Une plateforme neutre basée sur les cryptomonnaies.",
-    intro_p3: "Chaque transaction reflète une opinion individuelle.",
-    intro_h2_1: "Neutralité",
-    intro_p4: "Sans idéologies. Sans influence.",
-    intro_h2_2: "Fonctionnement",
-    intro_p5: "Expression via des actifs numériques.",
-    note: "Observation, pas influence."
-  },
-
-  zh: {
-    manifesto_btn: "宣言",
-    manifesto_title: "宣言",
-    manifesto_p1: "Political Opinion 是一个观察平台，不推广任何意识形态、候选人或结果。",
-    manifesto_p2: "观点通过去中心化市场参与表达，而非调查、叙事或引导。",
-    manifesto_p3: "该平台用于观察全球情绪如何自由、匿名且无中介地形成。",
-
-    intro_title: "政治观点",
-    intro_p1: "世界由政治决策塑造。",
-    intro_p2: "一个基于加密货币的中立平台。",
-    intro_p3: "每一笔交易代表个人观点。",
-    intro_h2_1: "中立性",
-    intro_p4: "无意识形态。无影响。",
-    intro_h2_2: "运作方式",
-    intro_p5: "通过数字资产表达观点。",
-    note: "观察，而非影响。"
-  }
-};
-
-/* ===== LANGUAGE SWITCH ===== */
-function setLanguage(lang) {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-  localStorage.setItem("lang", lang);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-document.querySelectorAll(".language-switcher img").forEach(flag => {
-  flag.addEventListener("click", () => {
-    setLanguage(flag.dataset.lang);
-  });
-});
+body {
+  background: #000;
+  overflow: hidden;
+  color: #e5e7eb;
+}
 
-/* INIT */
-setLanguage(localStorage.getItem("lang") || "en");
+/* ================= SLIDES ================= */
+.slides {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+/* INTRO */
+.intro {
+  background: url("assets/jornal.png") center/cover no-repeat;
+}
+
+/* BACKGROUND SPLIT */
+.background {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 0;
+}
+
+.bg {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(12px) brightness(0.7);
+}
+
+/* IMAGES */
+.bg.putin { background-image: url("assets/putin.png"); }
+.bg.zelensky { background-image: url("assets/zelensky.png"); }
+.bg.hamas { background-image: url("assets/hamas.png"); }
+.bg.israel { background-image: url("assets/israel.jpeg"); }
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5,10,30,0.65);
+  z-index: 1;
+}
+
+/* ================= FLOATING TEXT ================= */
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 720px;
+  padding: 42px;
+  background: rgba(15,23,42,0.88);
+  border-radius: 16px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.8),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slide.active .text-box {
+  opacity: 1;
+}
+
+/* FLOAT ANIMATION */
+.floating {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+  100% { transform: translate(-50%, -50%) translateY(0); }
+}
+
+/* TEXT */
+h1 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 24px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 26px;
+  color: #c7d2fe;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.note {
+  text-align: center;
+  font-style: italic;
+  color: #9ca3af;
+}
+
+/* ================= LANGUAGE + MANIFESTO ================= */
+.language-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.language-switcher img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-switcher img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+/* MANIFESTO */
+.manifesto-container {
+  position: relative;
+}
+
+.manifesto-btn {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(20,30,60,0.8);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.manifesto-btn:hover {
+  background: rgba(30,50,100,0.9);
+}
+
+.manifesto-popup {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 320px;
+  padding: 20px;
+  background: rgba(10,20,45,0.95);
+  border-radius: 14px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.manifesto-container:hover .manifesto-popup {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.manifesto-popup h3 {
+  text-align: center;
+  margin-bottom: 12px;
+}
