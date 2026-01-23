@@ -1,116 +1,183 @@
-const slides = document.querySelectorAll(".slide");
-let current = 0;
-
-/* SLIDES */
-function showSlide(i) {
-  slides.forEach(s => s.classList.remove("active"));
-  slides[i].classList.add("active");
-}
-
-document.addEventListener("wheel", e => {
-  if (e.deltaY > 0 && current < slides.length - 1) current++;
-  if (e.deltaY < 0 && current > 0) current--;
-  showSlide(current);
-});
-
-document.addEventListener("keydown", e => {
-  if (e.key === "ArrowDown" && current < slides.length - 1) current++;
-  if (e.key === "ArrowUp" && current > 0) current--;
-  showSlide(current);
-});
-
-/* TRANSLATIONS */
 const translations = {
-  en: {
-    intro_title: "Political Opinion",
-    intro_p1: "The world is shaped by political decisions, yet public opinion often remains invisible or distorted.",
-    intro_p2: "Political Opinion is a neutral platform that observes public sentiment through decentralized markets.",
-    intro_p3: "Each transaction reflects an individual and voluntary perspective.",
-    intro_h2_1: "Neutrality",
-    intro_p4: "No ideologies. No endorsements. No influence.",
-    intro_h2_2: "How It Works",
-    intro_p5: "Opinions are expressed by trading digital assets linked to global events.",
-    note: "Observation, not influence.",
-
-    manifesto_title: "Manifesto",
-    manifesto_p1: "Political Opinion is an observational platform.",
-    manifesto_p2: "It does not promote ideologies, candidates, or outcomes.",
-    manifesto_p3: "It exists to observe how global sentiment emerges.",
-
-    conflict_ru_title: "Russia × Ukraine",
-    conflict_ru_p1: "A large-scale military conflict reshaping European security.",
-    conflict_ru_p2: "It affects global energy, food supply, and diplomatic alliances.",
-    conflict_ru_p3: "Public sentiment emerges through decentralized economic behavior.",
-
-    conflict_hi_title: "Hamas × Israel",
-    conflict_hi_p1: "A long-standing conflict rooted in territorial and political disputes.",
-    conflict_hi_p2: "Marked by cycles of violence, humanitarian crises, and global reactions.",
-    conflict_hi_p3: "This platform observes sentiment without promoting narratives.",
-
-    conflict_uc_title: "USA × China",
-    conflict_uc_p1: "A strategic rivalry spanning trade, technology, and geopolitics.",
-    conflict_uc_p2: "It influences global markets, supply chains, and power balance.",
-    conflict_uc_p3: "Economic behavior reflects global perception of this tension.",
-
-    conflict_ii_title: "Iran × Iraq",
-    conflict_ii_p1: "A historical regional rivalry with lasting geopolitical consequences.",
-    conflict_ii_p2: "Its legacy still influences Middle Eastern power structures.",
-    conflict_ii_p3: "Market sentiment reflects long-term regional instability."
-  },
-
   pt: {
-    intro_title: "Political Opinion",
-    intro_p1: "O mundo é moldado por decisões políticas, mas a opinião pública muitas vezes permanece invisível.",
-    intro_p2: "Political Opinion é uma plataforma neutra de observação do sentimento público.",
-    intro_p3: "Cada transação representa uma decisão individual e voluntária.",
-    intro_h2_1: "Neutralidade",
-    intro_p4: "Sem ideologias. Sem endossos. Sem influência.",
-    intro_h2_2: "Como Funciona",
-    intro_p5: "As opiniões surgem por meio da negociação de ativos digitais.",
-    note: "Observação, não influência.",
-
+    manifesto_btn: "Manifesto",
     manifesto_title: "Manifesto",
     manifesto_p1: "Political Opinion é uma plataforma de observação.",
-    manifesto_p2: "Não promove ideologias, candidatos ou resultados.",
-    manifesto_p3: "Existe para observar o sentimento global.",
+    manifesto_p2: "Não promove ideologias, candidatos ou narrativas.",
+    manifesto_p3: "A opinião emerge através de mercados descentralizados.",
+    note: "Observação, não influência.",
 
-    conflict_ru_title: "Rússia × Ucrânia",
-    conflict_ru_p1: "Um conflito militar de grande escala no leste europeu.",
-    conflict_ru_p2: "Impacta energia, alimentos e alianças globais.",
-    conflict_ru_p3: "O sentimento público emerge por comportamentos econômicos.",
+    intro_title: "Political Opinion",
+    intro_p1: "O mundo é moldado por decisões políticas.",
+    intro_p2: "A opinião pública frequentemente permanece invisível.",
+    intro_p3: "Aqui ela se manifesta por ações reais.",
+    intro_h2_1: "Neutralidade",
+    intro_p4: "Sem ideologias. Sem influência.",
+    intro_h2_2: "Como Funciona",
+    intro_p5: "Opiniões surgem por meio de transações descentralizadas.",
 
-    conflict_hi_title: "Hamas × Israel",
-    conflict_hi_p1: "Conflito histórico marcado por disputas territoriais.",
-    conflict_hi_p2: "Envolve crises humanitárias e reações globais.",
-    conflict_hi_p3: "A plataforma observa o sentimento sem narrativas.",
+    c1_title: "Rússia × Ucrânia",
+    c1_p1: "Um conflito geopolítico de escala global.",
+    c1_p2: "Impacta economias, alianças e estabilidade mundial.",
+    c1_p3: "Aqui, observamos o sentimento coletivo.",
 
-    conflict_uc_title: "EUA × China",
-    conflict_uc_p1: "Uma rivalidade estratégica em comércio e tecnologia.",
-    conflict_uc_p2: "Afeta mercados globais e cadeias produtivas.",
-    conflict_uc_p3: "O mercado reflete a percepção global desse embate.",
+    c2_title: "Hamas × Israel",
+    c2_p1: "Décadas de tensões políticas e territoriais.",
+    c2_p2: "Consequências humanitárias profundas.",
+    c2_p3: "A plataforma observa, não toma partido.",
 
-    conflict_ii_title: "Irã × Iraque",
-    conflict_ii_p1: "Rivalidade regional com consequências duradouras.",
-    conflict_ii_p2: "Ainda influencia o equilíbrio do Oriente Médio.",
-    conflict_ii_p3: "O sentimento de mercado reflete instabilidade regional."
+    c3_title: "Estados Unidos × China",
+    c3_p1: "Disputa por influência econômica e tecnológica.",
+    c3_p2: "Define o futuro da ordem global.",
+    c3_p3: "Sentimentos emergem via mercados."
   },
 
-  es: { /* se quiser, no próximo passo eu detalho */ },
-  fr: { /* idem */ },
-  zh: { /* idem */ }
+  en: {
+    manifesto_btn: "Manifesto",
+    manifesto_title: "Manifesto",
+    manifesto_p1: "Political Opinion is an observational platform.",
+    manifesto_p2: "It promotes no ideologies or narratives.",
+    manifesto_p3: "Opinion emerges through decentralized markets.",
+    note: "Observation, not influence.",
+
+    intro_title: "Political Opinion",
+    intro_p1: "The world is shaped by political decisions.",
+    intro_p2: "Public opinion is often invisible.",
+    intro_p3: "Here, it appears through real actions.",
+    intro_h2_1: "Neutrality",
+    intro_p4: "No ideologies. No influence.",
+    intro_h2_2: "How It Works",
+    intro_p5: "Opinions emerge via decentralized transactions.",
+
+    c1_title: "Russia × Ukraine",
+    c1_p1: "A global-scale geopolitical conflict.",
+    c1_p2: "Affects economies and alliances worldwide.",
+    c1_p3: "Collective sentiment is observed.",
+
+    c2_title: "Hamas × Israel",
+    c2_p1: "Decades of political and territorial tension.",
+    c2_p2: "Deep humanitarian consequences.",
+    c2_p3: "Observation without narrative.",
+
+    c3_title: "United States × China",
+    c3_p1: "Competition for global influence.",
+    c3_p2: "Technology and economy at stake.",
+    c3_p3: "Markets reveal sentiment."
+  },
+
+  es: {
+    manifesto_btn: "Manifiesto",
+    manifesto_title: "Manifiesto",
+    manifesto_p1: "Political Opinion es una plataforma de observación.",
+    manifesto_p2: "No promueve ideologías ni narrativas.",
+    manifesto_p3: "La opinión surge de mercados descentralizados.",
+    note: "Observación, no influencia.",
+
+    intro_title: "Political Opinion",
+    intro_p1: "El mundo es moldeado por decisiones políticas.",
+    intro_p2: "La opinión pública suele ser invisible.",
+    intro_p3: "Aquí se expresa con acciones reales.",
+    intro_h2_1: "Neutralidad",
+    intro_p4: "Sin ideologías. Sin influencia.",
+    intro_h2_2: "Cómo Funciona",
+    intro_p5: "Las opiniones surgen vía mercados.",
+
+    c1_title: "Rusia × Ucrania",
+    c1_p1: "Conflicto geopolítico de alcance global.",
+    c1_p2: "Impacta economías y alianzas.",
+    c1_p3: "Observamos el sentimiento colectivo.",
+
+    c2_title: "Hamas × Israel",
+    c2_p1: "Décadas de tensiones políticas.",
+    c2_p2: "Consecuencias humanitarias profundas.",
+    c2_p3: "Observación sin narrativa.",
+
+    c3_title: "Estados Unidos × China",
+    c3_p1: "Competencia por influencia global.",
+    c3_p2: "Tecnología y economía en disputa.",
+    c3_p3: "Los mercados revelan sentimiento."
+  },
+
+  fr: {
+    manifesto_btn: "Manifeste",
+    manifesto_title: "Manifeste",
+    manifesto_p1: "Political Opinion est une plateforme d'observation.",
+    manifesto_p2: "Aucune idéologie ou narration.",
+    manifesto_p3: "L'opinion émerge des marchés décentralisés.",
+    note: "Observation, pas influence.",
+
+    intro_title: "Political Opinion",
+    intro_p1: "Le monde est façonné par des décisions politiques.",
+    intro_p2: "L'opinion publique est souvent invisible.",
+    intro_p3: "Ici, elle s'exprime par l'action.",
+    intro_h2_1: "Neutralité",
+    intro_p4: "Sans idéologie.",
+    intro_h2_2: "Fonctionnement",
+    intro_p5: "Opinions via marchés décentralisés.",
+
+    c1_title: "Russie × Ukraine",
+    c1_p1: "Conflit géopolitique majeur.",
+    c1_p2: "Impact mondial important.",
+    c1_p3: "Observation du sentiment collectif.",
+
+    c2_title: "Hamas × Israël",
+    c2_p1: "Tensions historiques.",
+    c2_p2: "Conséquences humanitaires graves.",
+    c2_p3: "Plateforme neutre.",
+
+    c3_title: "États-Unis × Chine",
+    c3_p1: "Rivalité stratégique mondiale.",
+    c3_p2: "Technologie et économie.",
+    c3_p3: "Les marchés parlent."
+  },
+
+  zh: {
+    manifesto_btn: "宣言",
+    manifesto_title: "宣言",
+    manifesto_p1: "Political Opinion 是一个观察平台。",
+    manifesto_p2: "不推广任何意识形态。",
+    manifesto_p3: "观点通过去中心化市场呈现。",
+    note: "观察，而非影响。",
+
+    intro_title: "Political Opinion",
+    intro_p1: "世界由政治决策塑造。",
+    intro_p2: "公众意见往往不可见。",
+    intro_p3: "这里通过真实行为表达。",
+    intro_h2_1: "中立",
+    intro_p4: "无意识形态。",
+    intro_h2_2: "运作方式",
+    intro_p5: "通过市场表达观点。",
+
+    c1_title: "俄罗斯 × 乌克兰",
+    c1_p1: "全球性地缘政治冲突。",
+    c1_p2: "影响世界稳定。",
+    c1_p3: "观察集体情绪。",
+
+    c2_title: "哈马斯 × 以色列",
+    c2_p1: "长期政治紧张。",
+    c2_p2: "严重人道影响。",
+    c2_p3: "平台保持中立。",
+
+    c3_title: "美国 × 中国",
+    c3_p1: "全球影响力竞争。",
+    c3_p2: "科技与经济博弈。",
+    c3_p3: "市场反映情绪。"
+  }
 };
 
-/* LANGUAGE SWITCH */
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
-    el.textContent = translations[lang][el.dataset.i18n];
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      el.innerText = translations[lang][key];
+    }
   });
-
-  document.querySelectorAll(".language-switcher img")
-    .forEach(img => img.classList.toggle("active", img.dataset.lang === lang));
 }
 
-document.querySelectorAll(".language-switcher img")
-  .forEach(img => img.addEventListener("click", () => setLanguage(img.dataset.lang)));
+document.querySelectorAll(".language-switcher img").forEach(img => {
+  img.addEventListener("click", () => {
+    setLanguage(img.dataset.lang);
+  });
+});
 
 setLanguage("en");
