@@ -1,7 +1,5 @@
-/* =========================================================
-   RESET
-========================================================= */
 
+/* ================= RESET / BASE ================= */
 * {
   margin: 0;
   padding: 0;
@@ -15,11 +13,7 @@ body {
   color: #e5e7eb;
 }
 
-
-/* =========================================================
-   SLIDES
-========================================================= */
-
+/* ================= SLIDES ================= */
 .slides {
   position: relative;
   width: 100vw;
@@ -40,20 +34,12 @@ body {
   z-index: 10;
 }
 
-
-/* =========================================================
-   INTRO
-========================================================= */
-
+/* ================= INTRO ================= */
 .intro {
   background: url("assets/jornal.png") center / cover no-repeat;
 }
 
-
-/* =========================================================
-   BACKGROUND SPLIT (CONFLICTS)
-========================================================= */
-
+/* ================= BACKGROUND SPLIT ================= */
 .background {
   position: absolute;
   inset: 0;
@@ -69,11 +55,7 @@ body {
   filter: blur(12px) brightness(0.7);
 }
 
-
-/* =========================================================
-   CONFLICT IMAGES
-========================================================= */
-
+/* Background images */
 .bg.putin {
   background-image: url("assets/putin.png");
 }
@@ -90,11 +72,7 @@ body {
   background-image: url("assets/israel.jpeg");
 }
 
-
-/* =========================================================
-   OVERLAY
-========================================================= */
-
+/* ================= OVERLAY ================= */
 .overlay {
   position: absolute;
   inset: 0;
@@ -102,24 +80,19 @@ body {
   z-index: 1;
 }
 
-
-/* =========================================================
-   TEXT BOX (CARD)
-========================================================= */
-
+/* ================= FLOATING TEXT BOX ================= */
 .text-box {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   max-width: 720px;
   padding: 42px;
 
   background: rgba(15, 23, 42, 0.88);
   border-radius: 16px;
 
-  /* profundidade */
+  /* Profundidade */
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.8),
     0 0 0 1px rgba(255, 255, 255, 0.06);
@@ -133,11 +106,7 @@ body {
   opacity: 1;
 }
 
-
-/* =========================================================
-   FLOATING / GLOW BORDER
-========================================================= */
-
+/* BORDAS FLUTUANTES / LUMINOSAS */
 .text-box::before {
   content: "";
   position: absolute;
@@ -151,11 +120,7 @@ body {
     0 0 70px rgba(99, 102, 241, 0.08);
 }
 
-
-/* =========================================================
-   TEXT
-========================================================= */
-
+/* ================= TEXT ================= */
 h1 {
   text-align: center;
   font-size: 34px;
@@ -181,11 +146,7 @@ p {
   color: #9ca3af;
 }
 
-
-/* =========================================================
-   LANGUAGE SWITCH + MANIFESTO
-========================================================= */
-
+/* ================= LANGUAGE SWITCHER ================= */
 .language-wrapper {
   position: fixed;
   top: 20px;
@@ -196,9 +157,6 @@ p {
   align-items: center;
   gap: 16px;
 }
-
-
-/* ================= LANGUAGE SWITCH ================= */
 
 .language-switcher {
   display: flex;
@@ -219,9 +177,7 @@ p {
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
-
 /* ================= MANIFESTO ================= */
-
 .manifesto-container {
   position: relative;
 }
@@ -229,11 +185,9 @@ p {
 .manifesto-btn {
   padding: 8px 14px;
   border-radius: 20px;
-
   background: rgba(20, 30, 60, 0.8);
   cursor: pointer;
   font-size: 14px;
-
   transition: background 0.3s ease;
 }
 
@@ -270,3 +224,4 @@ p {
   text-align: center;
   margin-bottom: 12px;
 }
+
