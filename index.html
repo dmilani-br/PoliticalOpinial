@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Political Opinion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <!-- LANGUAGE + MANIFESTO -->
 <div class="language-wrapper">
-
   <div class="language-switcher">
     <img src="assets/bandeira-brasil.png" data-lang="pt" alt="Português">
     <img src="assets/bandeira-inglaterra.png" data-lang="en" alt="English">
@@ -19,101 +18,94 @@
     <img src="assets/bandeira-china.png" data-lang="zh" alt="中文">
   </div>
 
-  <!-- MANIFESTO BUTTON -->
   <div class="manifesto-container">
-    <div class="manifesto-btn">Manifesto</div>
-
+    <div class="manifesto-btn" data-i18n="manifesto_title">Manifesto</div>
     <div class="manifesto-popup">
-      <h3>Manifesto</h3>
-      <p>
-        Political Opinion is an observational platform.
-        It does not promote ideologies, candidates, or outcomes.
-      </p>
-      <p>
-        Opinions are expressed through decentralized market participation,
-        not surveys, narratives, or influence.
-      </p>
-      <p>
-        This platform exists to observe how global sentiment emerges —
-        freely, anonymously, and without intermediaries.
-      </p>
-      <p class="note">Observation, not influence.</p>
+      <h3 data-i18n="manifesto_title">Manifesto</h3>
+      <p data-i18n="manifesto_p1"></p>
+      <p data-i18n="manifesto_p2"></p>
+      <p data-i18n="manifesto_p3"></p>
+      <p class="note" data-i18n="note"></p>
     </div>
   </div>
-
 </div>
 
 <div class="slides">
 
-  <!-- SLIDE 1 -->
-  <section class="slide active intro">
-    <div class="overlay"></div>
-    <div class="text-box floating">
-      <h1 data-i18n="intro_title">Political Opinion</h1>
+<!-- INTRO -->
+<section class="slide active intro">
+  <div class="overlay"></div>
+  <div class="text-box">
+    <h1 data-i18n="intro_title"></h1>
+    <p data-i18n="intro_p1"></p>
+    <p data-i18n="intro_p2"></p>
+    <p data-i18n="intro_p3"></p>
 
-      <p data-i18n="intro_p1">
-        The world is shaped by political decisions, yet public opinion often remains invisible or distorted.
-      </p>
+    <h2 data-i18n="intro_h2_1"></h2>
+    <p data-i18n="intro_p4"></p>
 
-      <p data-i18n="intro_p2">
-        Political Opinion is a neutral platform that reveals public sentiment through the buying and selling of cryptocurrencies.
-      </p>
+    <h2 data-i18n="intro_h2_2"></h2>
+    <p data-i18n="intro_p5"></p>
 
-      <p data-i18n="intro_p3">
-        Each transaction represents a sincere individual perspective.
-      </p>
+    <p class="note" data-i18n="note"></p>
+  </div>
+</section>
 
-      <h2 data-i18n="intro_h2_1">Neutrality</h2>
-      <p data-i18n="intro_p4">
-        No ideologies. No endorsements. No influence.
-      </p>
+<!-- CONFLICT 1 -->
+<section class="slide conflict">
+  <div class="background">
+    <div class="bg putin"></div>
+    <div class="bg zelensky"></div>
+  </div>
+  <div class="overlay"></div>
+  <div class="text-box">
+    <h1>Russia × Ukraine</h1>
+    <p>One of the most significant geopolitical crises of the 21st century.</p>
+    <p class="note">Observation, not influence.</p>
+  </div>
+</section>
 
-      <h2 data-i18n="intro_h2_2">How It Works</h2>
-      <p data-i18n="intro_p5">
-        Readers express their opinion by trading digital assets linked to global events.
-      </p>
+<!-- CONFLICT 2 -->
+<section class="slide conflict">
+  <div class="background">
+    <div class="bg hamas"></div>
+    <div class="bg israel"></div>
+  </div>
+  <div class="overlay"></div>
+  <div class="text-box">
+    <h1>Hamas × Israel</h1>
+    <p>A conflict rooted in decades of political and humanitarian tension.</p>
+    <p class="note">Observation, not influence.</p>
+  </div>
+</section>
 
-      <p class="note" data-i18n="note">Observation, not influence.</p>
-    </div>
-  </section>
+<!-- CONFLICT 3 -->
+<section class="slide conflict">
+  <div class="background">
+    <div class="bg usa"></div>
+    <div class="bg china"></div>
+  </div>
+  <div class="overlay"></div>
+  <div class="text-box">
+    <h1>USA × China</h1>
+    <p>Economic rivalry shaping the global balance of power.</p>
+    <p class="note">Observation, not influence.</p>
+  </div>
+</section>
 
-  <!-- SLIDE 2 -->
-  <section class="slide conflict">
-    <div class="background">
-      <div class="bg left putin"></div>
-      <div class="bg right zelensky"></div>
-    </div>
-    <div class="overlay"></div>
-    <div class="text-box floating">
-      <h1>Russia × Ukraine</h1>
-      <p>
-        One of the most significant geopolitical crises of the 21st century.
-      </p>
-      <p>
-        Public sentiment is observed through decentralized markets.
-      </p>
-      <p class="note">Observation, not influence.</p>
-    </div>
-  </section>
-
-  <!-- SLIDE 3 -->
-  <section class="slide conflict">
-    <div class="background">
-      <div class="bg left hamas"></div>
-      <div class="bg right israel"></div>
-    </div>
-    <div class="overlay"></div>
-    <div class="text-box floating">
-      <h1>Hamas × Israel</h1>
-      <p>
-        A conflict rooted in decades of political, territorial and humanitarian tension.
-      </p>
-      <p>
-        This platform observes sentiment without promoting narratives.
-      </p>
-      <p class="note">Observation, not influence.</p>
-    </div>
-  </section>
+<!-- CONFLICT 4 -->
+<section class="slide conflict">
+  <div class="background">
+    <div class="bg ira"></div>
+    <div class="bg iraq"></div>
+  </div>
+  <div class="overlay"></div>
+  <div class="text-box">
+    <h1>Iran × Iraq</h1>
+    <p>A historic regional conflict with lasting geopolitical effects.</p>
+    <p class="note">Observation, not influence.</p>
+  </div>
+</section>
 
 </div>
 
