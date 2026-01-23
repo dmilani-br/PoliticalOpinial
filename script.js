@@ -1,132 +1,165 @@
-const slider = document.getElementById("slider");
-const boxTitle = document.getElementById("boxTitle");
-const boxText = document.getElementById("boxText");
-const boxNote = document.getElementById("boxNote");
-
-const manifestoBtn = document.getElementById("manifestoBtn");
-const manifestoModal = document.getElementById("manifestoModal");
-const closeManifesto = document.getElementById("closeManifesto");
-const manifestoTitle = document.getElementById("manifestoTitle");
-const manifestoText = document.getElementById("manifestoText");
-
-let currentLang = "en";
-let currentSlide = 0;
-
-const conflicts = [
-  { id: "hamas_israel", image: "assets/hamas.png" },
-  { id: "russia_ukraine", image: "assets/putin.png" },
-  { id: "usa_china", image: "assets/eua.jpeg" },
-  { id: "iran_israel", image: "assets/ira.jpeg" }
-];
+/* =========================================================
+   TRANSLATIONS
+========================================================= */
 
 const translations = {
+
+  /* ================= ENGLISH ================= */
   en: {
-    manifestoTitle: "Manifesto",
-    manifestoText: "This platform observes global conflicts without influence.",
-    conflicts: {
-      hamas_israel: {
-        title: "Hamas × Israel",
-        text: "A conflict rooted in decades of tension.",
-        note: "Observation, not influence."
-      },
-      russia_ukraine: {
-        title: "Russia × Ukraine",
-        text: "A geopolitical confrontation reshaping Europe.",
-        note: "Observation, not influence."
-      },
-      usa_china: {
-        title: "USA × China",
-        text: "A dispute of power, economy and influence.",
-        note: "Observation, not influence."
-      },
-      iran_israel: {
-        title: "Iran × Israel",
-        text: "Indirect conflict through regional tensions.",
-        note: "Observation, not influence."
-      }
-    }
+
+    /* ===== MANIFESTO ===== */
+    manifesto_btn: "Manifesto",
+    manifesto_title: "Manifesto",
+    manifesto_p1:
+      "Political Opinion is an observational platform. It does not promote ideologies, candidates, or outcomes.",
+    manifesto_p2:
+      "Opinions are expressed through decentralized market participation, not surveys, narratives, or influence.",
+    manifesto_p3:
+      "This platform exists to observe how global sentiment emerges — freely, anonymously, and without intermediaries.",
+
+    /* ===== INTRO ===== */
+    intro_title: "Political Opinion",
+    intro_p1:
+      "The world is shaped by political decisions, yet public opinion often remains invisible or distorted.",
+    intro_p2:
+      "Political Opinion is a neutral platform that reveals public sentiment through the buying and selling of cryptocurrencies.",
+    intro_p3:
+      "Each transaction represents a sincere individual perspective.",
+
+    intro_h2_1: "Neutrality",
+    intro_p4: "No ideologies. No endorsements. No influence.",
+
+    intro_h2_2: "How It Works",
+    intro_p5:
+      "Readers express their opinion by trading digital assets linked to global events.",
+
+    note: "Observation, not influence.",
+
+    /* ===== RUSSIA × UKRAINE ===== */
+    conflict_ru_title: "Russia × Ukraine",
+    conflict_ru_p1:
+      "One of the most significant geopolitical crises of the 21st century.",
+    conflict_ru_p2:
+      "Public sentiment is observed through decentralized markets.",
+
+    /* ===== HAMAS × ISRAEL ===== */
+    conflict_hi_title: "Hamas × Israel",
+    conflict_hi_p1:
+      "A conflict rooted in decades of political, territorial and humanitarian tension.",
+    conflict_hi_p2:
+      "This platform observes sentiment without promoting narratives."
   },
 
+  /* ================= PORTUGUÊS ================= */
   pt: {
-    manifestoTitle: "Manifesto",
-    manifestoText: "Esta plataforma observa conflitos globais sem influenciar.",
-    conflicts: {
-      hamas_israel: {
-        title: "Hamas × Israel",
-        text: "Um conflito enraizado em décadas de tensão.",
-        note: "Observação, não influência."
-      },
-      russia_ukraine: {
-        title: "Rússia × Ucrânia",
-        text: "Confronto geopolítico que redefine a Europa.",
-        note: "Observação, não influência."
-      },
-      usa_china: {
-        title: "EUA × China",
-        text: "Disputa de poder, economia e influência.",
-        note: "Observação, não influência."
-      },
-      iran_israel: {
-        title: "Irã × Israel",
-        text: "Conflito indireto por tensões regionais.",
-        note: "Observação, não influência."
-      }
-    }
-  }
-};
+    manifesto_btn: "Manifesto",
+    manifesto_title: "Manifesto",
+    manifesto_p1:
+      "Political Opinion é uma plataforma de observação. Não promove ideologias, candidatos ou resultados.",
+    manifesto_p2:
+      "As opiniões são expressas por meio da participação em mercados descentralizados, não por pesquisas ou narrativas.",
+    manifesto_p3:
+      "Esta plataforma existe para observar como o sentimento global emerge — livremente, anonimamente e sem intermediários.",
 
-/* ---------- RENDER ---------- */
-function renderSlides() {
-  slider.innerHTML = "";
-  conflicts.forEach(conflict => {
-    const slide = document.createElement("div");
-    slide.className = "slide";
-    slide.style.backgroundImage = `url(${conflict.image})`;
-    slider.appendChild(slide);
-  });
-}
+    intro_title: "Political Opinion",
+    intro_p1:
+      "O mundo é moldado por decisões políticas, mas a opinião pública muitas vezes permanece invisível ou distorcida.",
+    intro_p2:
+      "Political Opinion é uma plataforma neutra que revela o sentimento público por meio da compra e venda de criptomoedas.",
+    intro_p3:
+      "Cada transação representa uma perspectiva individual e sincera.",
 
-function updateText() {
-  const conflict = conflicts[currentSlide];
-  const data = translations[currentLang].conflicts[conflict.id];
+    intro_h2_1: "Neutralidade",
+    intro_p4: "Sem ideologias. Sem endossos. Sem influência.",
 
-  boxTitle.textContent = data.title;
-  boxText.textContent = data.text;
-  boxNote.textContent = data.note;
+    intro_h2_2: "Como Funciona",
+    intro_p5:
+      "Os leitores expressam sua opinião negociando ativos digitais ligados a eventos globais.",
 
-  manifestoBtn.textContent = translations[currentLang].manifestoTitle;
-  manifestoTitle.textContent = translations[currentLang].manifestoTitle;
-  manifestoText.textContent = translations[currentLang].manifestoText;
-}
+    note: "Observação, não influência.",
 
-function updateSlide() {
-  slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
-  updateText();
-}
+    conflict_ru_title: "Rússia × Ucrânia",
+    conflict_ru_p1:
+      "Uma das crises geopolíticas mais significativas do século XXI.",
+    conflict_ru_p2:
+      "O sentimento público é observado por meio de mercados descentralizados.",
 
-/* ---------- CONTROLS ---------- */
-document.addEventListener("keydown", e => {
-  if (e.key === "ArrowRight") {
-    currentSlide = (currentSlide + 1) % conflicts.length;
-    updateSlide();
-  }
-  if (e.key === "ArrowLeft") {
-    currentSlide =
-      (currentSlide - 1 + conflicts.length) % conflicts.length;
-    updateSlide();
-  }
-});
+    conflict_hi_title: "Hamas × Israel",
+    conflict_hi_p1:
+      "Um conflito enraizado em décadas de tensões políticas, territoriais e humanitárias.",
+    conflict_hi_p2:
+      "Esta plataforma observa o sentimento sem promover narrativas."
+  },
 
-document.querySelectorAll("[data-lang]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    currentLang = btn.dataset.lang;
-    updateText();
-  });
-});
+  /* ================= ESPAÑOL ================= */
+  es: {
+    manifesto_btn: "Manifiesto",
+    manifesto_title: "Manifiesto",
+    manifesto_p1:
+      "Political Opinion es una plataforma de observación. No promueve ideologías, candidatos ni resultados.",
+    manifesto_p2:
+      "Las opiniones se expresan mediante la participación en mercados descentralizados, no encuestas ni narrativas.",
+    manifesto_p3:
+      "Esta plataforma existe para observar cómo surge el sentimiento global — libre, anónimo y sin intermediarios.",
 
-manifestoBtn.onclick = () => manifestoModal.classList.remove("hidden");
-closeManifesto.onclick = () => manifestoModal.classList.add("hidden");
+    intro_title: "Political Opinion",
+    intro_p1:
+      "El mundo está moldeado por decisiones políticas, pero la opinión pública suele permanecer invisible o distorsionada.",
+    intro_p2:
+      "Political Opinion es una plataforma neutral que revela el sentimiento público mediante criptomonedas.",
+    intro_p3:
+      "Cada transacción representa una perspectiva individual sincera.",
 
-/* ---------- INIT ---------- */
-renderSlides();
-updateSlide();
+    intro_h2_1: "Neutralidad",
+    intro_p4: "Sin ideologías. Sin respaldos. Sin influencia.",
+
+    intro_h2_2: "Cómo Funciona",
+    intro_p5:
+      "Los lectores expresan su opinión negociando activos digitales vinculados a eventos globales.",
+
+    note: "Observación, no influencia.",
+
+    conflict_ru_title: "Rusia × Ucrania",
+    conflict_ru_p1:
+      "Una de las crisis geopolíticas más importantes del siglo XXI.",
+    conflict_ru_p2:
+      "El sentimiento público se observa a través de mercados descentralizados.",
+
+    conflict_hi_title: "Hamas × Israel",
+    conflict_hi_p1:
+      "Un conflicto arraigado en décadas de tensión política, territorial y humanitaria.",
+    conflict_hi_p2:
+      "La plataforma observa el sentimiento sin promover narrativas."
+  },
+
+  /* ================= FRANÇAIS ================= */
+  fr: {
+    manifesto_btn: "Manifeste",
+    manifesto_title: "Manifeste",
+    manifesto_p1:
+      "Political Opinion est une plateforme d’observation. Elle ne promeut aucune idéologie, candidat ou résultat.",
+    manifesto_p2:
+      "Les opinions s’expriment par la participation à des marchés décentralisés, pas par des sondages ou récits.",
+    manifesto_p3:
+      "Cette plateforme existe pour observer l’émergence du sentiment mondial — librement, anonymement et sans intermédiaires.",
+
+    intro_title: "Political Opinion",
+    intro_p1:
+      "Le monde est façonné par des décisions politiques, mais l’opinion publique reste souvent invisible ou déformée.",
+    intro_p2:
+      "Political Opinion est une plateforme neutre révélant le sentiment public via les cryptomonnaies.",
+    intro_p3:
+      "Chaque transaction représente une perspective individuelle sincère.",
+
+    intro_h2_1: "Neutralité",
+    intro_p4: "Aucune idéologie. Aucun soutien. Aucune influence.",
+
+    intro_h2_2: "Comment ça marche",
+    intro_p5:
+      "Les lecteurs expriment leur opinion via des actifs numériques liés à des événements mondiaux.",
+
+    note: "Observation, pas influence.",
+
+    conflict_ru_title: "Russie × Ukraine",
+    conflict_ru_p1:
+      "L’une des cri
