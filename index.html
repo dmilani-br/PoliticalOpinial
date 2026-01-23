@@ -1,77 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Political Opinion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>PoliticalOpinion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
+  <!-- Idiomas + Manifesto -->
+  <header class="top-bar">
+    <div class="languages">
+      <button data-lang="en"><img src="assets/bandeira-inglaterra.png"></button>
+      <button data-lang="pt"><img src="assets/bandeira-brasil.png"></button>
+      <button data-lang="es"><img src="assets/bandeira-espanha.png"></button>
+      <button data-lang="fr"><img src="assets/bandeira-franca.png"></button>
+      <button data-lang="zh"><img src="assets/bandeira-china.png"></button>
+    </div>
+    <button id="manifestoBtn" class="manifesto-btn">Manifesto</button>
+  </header>
 
-  <div class="language-switcher">
-    <button data-lang="en">EN</button>
-    <button data-lang="pt">PT</button>
-    <button data-lang="es">ES</button>
-    <button data-lang="fr">FR</button>
-    <button data-lang="zh">中文</button>
+  <!-- Slides -->
+  <main id="slider">
+    <!-- Slides são gerados via JS -->
+  </main>
+
+  <!-- Caixa de Texto -->
+  <section id="textBox" class="text-box">
+    <h2 id="boxTitle"></h2>
+    <p id="boxText"></p>
+    <em id="boxNote"></em>
+  </section>
+
+  <!-- Manifesto Modal -->
+  <div id="manifestoModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeManifesto">&times;</span>
+      <h2 id="manifestoTitle"></h2>
+      <p id="manifestoText"></p>
+    </div>
   </div>
 
-  <div class="manifesto-container">
-    <button class="manifesto-btn" data-i18n="manifesto_btn">Manifesto</button>
-
-    <div class="manifesto-popup">
-      <h3 data-i18n="manifesto_title">Manifesto</h3>
-      <p data-i18n="manifesto_p1"></p>
-      <p data-i18n="manifesto_p2"></p>
-      <p data-i18n="manifesto_p3"></p>
-      <p class="note" data-i18n="note"></p>
-    </div>
-  </div>
-
-</div>
-
-<!-- SLIDES -->
-<div class="slides">
-
-  <!-- SLIDE 1 -->
-  <section class="slide active">
-    <div class="text-box">
-      <h1 data-i18n="intro_title"></h1>
-      <p data-i18n="intro_p1"></p>
-      <p data-i18n="intro_p2"></p>
-
-      <h2 data-i18n="intro_h2_1"></h2>
-      <p data-i18n="intro_p3"></p>
-
-      <p class="note" data-i18n="note"></p>
-    </div>
-  </section>
-
-  <!-- SLIDE 2 -->
-  <section class="slide">
-    <div class="text-box">
-      <h1 data-i18n="conflict_ru_title"></h1>
-      <p data-i18n="conflict_ru_p1"></p>
-      <p data-i18n="conflict_ru_p2"></p>
-      <p class="note" data-i18n="note"></p>
-    </div>
-  </section>
-
-  <!-- SLIDE 3 -->
-  <section class="slide">
-    <div class="text-box">
-      <h1 data-i18n="conflict_hi_title"></h1>
-      <p data-i18n="conflict_hi_p1"></p>
-      <p data-i18n="conflict_hi_p2"></p>
-      <p class="note" data-i18n="note"></p>
-    </div>
-  </section>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
