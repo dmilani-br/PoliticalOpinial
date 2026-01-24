@@ -1,70 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Political Opinion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- LANGUAGE -->
-  <div class="language-switcher">
-    <img src="assets/eua.jpeg" data-lang="en">
-    <img src="assets/brasil.png" data-lang="pt">
-    <img src="assets/espanha.png" data-lang="es">
-    <img src="assets/franca.png" data-lang="fr">
-    <img src="assets/china.png" data-lang="zh">
-  </div>
+<!-- LANGUAGE SWITCH -->
+<div class="language-switcher">
+  <img src="assets/en.png" data-lang="en" />
+  <img src="assets/br.png" data-lang="pt" />
+  <img src="assets/es.png" data-lang="es" />
+  <img src="assets/fr.png" data-lang="fr" />
+  <img src="assets/zh.png" data-lang="zh" />
+</div>
 
-  <!-- SLIDES -->
+<!-- SLIDES -->
+<div class="slides">
+
+  <!-- INTRO -->
   <section class="slide active intro">
     <h1 data-i18n="intro_title"></h1>
     <p data-i18n="intro_p1"></p>
     <p data-i18n="intro_p2"></p>
     <p data-i18n="intro_p3"></p>
-    <h2 data-i18n="intro_h2_1"></h2>
-    <p data-i18n="intro_p4"></p>
-    <h2 data-i18n="intro_h2_2"></h2>
-    <p data-i18n="intro_p5"></p>
-    <small data-i18n="note"></small>
+    <p class="note" data-i18n="note"></p>
   </section>
 
-  <section class="slide manifesto">
-    <h1 data-i18n="manifesto_title"></h1>
-    <p data-i18n="manifesto_p1"></p>
-    <p data-i18n="manifesto_p2"></p>
-    <p data-i18n="manifesto_p3"></p>
-  </section>
-
+  <!-- RUSSIA x UKRAINE -->
   <section class="slide conflict ru">
     <h1 data-i18n="ru_title"></h1>
     <p data-i18n="ru_p1"></p>
     <p data-i18n="ru_p2"></p>
     <p data-i18n="ru_p3"></p>
+    <p data-i18n="ru_p4"></p>
   </section>
 
-  <section class="slide conflict hi">
-    <h1 data-i18n="hi_title"></h1>
-    <p data-i18n="hi_p1"></p>
-    <p data-i18n="hi_p2"></p>
-    <p data-i18n="hi_p3"></p>
+  <!-- ISRAEL x HAMAS -->
+  <section class="slide conflict ih">
+    <h1 data-i18n="ih_title"></h1>
+    <p data-i18n="ih_p1"></p>
+    <p data-i18n="ih_p2"></p>
+    <p data-i18n="ih_p3"></p>
+    <p data-i18n="ih_p4"></p>
   </section>
 
+  <!-- USA x CHINA -->
   <section class="slide conflict uc">
     <h1 data-i18n="uc_title"></h1>
     <p data-i18n="uc_p1"></p>
     <p data-i18n="uc_p2"></p>
     <p data-i18n="uc_p3"></p>
+    <p data-i18n="uc_p4"></p>
   </section>
 
-  <section class="slide conflict ii">
-    <h1 data-i18n="ii_title"></h1>
-    <p data-i18n="ii_p1"></p>
-    <p data-i18n="ii_p2"></p>
-    <p data-i18n="ii_p3"></p>
-  </section>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
