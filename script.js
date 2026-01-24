@@ -12,57 +12,67 @@ document.addEventListener("wheel", e => {
   showSlide(current);
 });
 
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowDown" && current < slides.length - 1) current++;
+  if (e.key === "ArrowUp" && current > 0) current--;
+  showSlide(current);
+});
+
 const translations = {
   en: {
     intro_title: "Political Opinion",
     intro_p1: "The world is shaped by political decisions.",
-    intro_p2: "Public opinion is often invisible or distorted.",
+    intro_p2: "Public opinion often remains invisible or distorted.",
     intro_p3: "This platform observes sentiment through markets.",
     note: "Observation, not influence.",
 
     ru_title: "Russia × Ukraine",
-    ru_p1: "A large-scale war reshaping European security.",
-    ru_p2: "Energy markets and global alliances are affected.",
-    ru_p3: "Narratives vary dramatically across regions.",
+    ru_p1: "A war redefining European security.",
+    ru_p2: "Energy, alliances and markets are deeply affected.",
+    ru_p3: "Global sentiment varies across regions.",
 
     ih_title: "Hamas × Israel",
-    ih_p1: "A decades-long conflict rooted in territory and identity.",
+    ih_p1: "A long-standing territorial and political conflict.",
     ih_p2: "Civilians face ongoing humanitarian crises.",
-    ih_p3: "Global opinion remains deeply polarized.",
+    ih_p3: "Public opinion remains polarized worldwide.",
 
     uc_title: "USA × China",
-    uc_p1: "A strategic rivalry shaping the 21st century.",
-    uc_p2: "Technology, trade and influence are contested.",
-    uc_p3: "Markets respond to geopolitical signals."
+    uc_p1: "A strategic rivalry shaping global power.",
+    uc_p2: "Technology and trade are key battlegrounds.",
+    uc_p3: "Markets react to geopolitical signals."
   },
 
   pt: {
     intro_title: "Political Opinion",
     intro_p1: "O mundo é moldado por decisões políticas.",
     intro_p2: "A opinião pública muitas vezes é invisível.",
-    intro_p3: "Observamos o sentimento através do mercado.",
+    intro_p3: "Esta plataforma observa o sentimento via mercados.",
     note: "Observação, não influência.",
 
     ru_title: "Rússia × Ucrânia",
     ru_p1: "Uma guerra que redefine a segurança europeia.",
-    ru_p2: "Impacta energia e alianças globais.",
-    ru_p3: "Narrativas variam entre países.",
+    ru_p2: "Energia, alianças e mercados são impactados.",
+    ru_p3: "O sentimento global varia entre regiões.",
 
     ih_title: "Hamas × Israel",
-    ih_p1: "Conflito histórico baseado em território.",
+    ih_p1: "Conflito histórico territorial e político.",
     ih_p2: "Populações civis enfrentam crises humanitárias.",
-    ih_p3: "A opinião global é polarizada.",
+    ih_p3: "A opinião pública é altamente polarizada.",
 
     uc_title: "EUA × China",
-    uc_p1: "Rivalidade estratégica do século XXI.",
+    uc_p1: "Rivalidade estratégica global.",
     uc_p2: "Tecnologia e comércio em disputa.",
-    uc_p3: "Mercados reagem à política."
+    uc_p3: "Mercados reagem à política internacional."
   }
 };
 
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     el.textContent = translations[lang][el.dataset.i18n];
+  });
+
+  document.querySelectorAll(".language-switcher img").forEach(img => {
+    img.classList.toggle("active", img.dataset.lang === lang);
   });
 }
 
