@@ -84,3 +84,28 @@ body {
   right: 20px;
   z-index: 999;
 }
+
+.language-switcher {
+  display: flex;
+  gap: 12px;
+}
+
+.language-switcher img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+}
+
+.language-switcher img:hover {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+.language-switcher img.active {
+  opacity: 1;
+  transform: scale(1.25);
+  box-shadow: 0 0 16px rgba(99,102,241,0.9);
+}
