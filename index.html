@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Political Opinion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <!-- LANGUAGE + MANIFESTO -->
 <div class="language-wrapper">
-
   <div class="language-switcher">
-    <img src="assets/bandeira-brasil.png" data-lang="pt" />
-    <img src="assets/bandeira-inglaterra.png" data-lang="en" />
-    <img src="assets/bandeira-espanha.png" data-lang="es" />
-    <img src="assets/bandeira-franca.png" data-lang="fr" />
-    <img src="assets/bandeira-china.png" data-lang="zh" />
+    <img src="assets/bandeira-brasil.png" data-lang="pt">
+    <img src="assets/bandeira-inglaterra.png" data-lang="en">
+    <img src="assets/bandeira-espanha.png" data-lang="es">
+    <img src="assets/bandeira-franca.png" data-lang="fr">
+    <img src="assets/bandeira-china.png" data-lang="zh">
   </div>
 
   <div class="manifesto-container">
-    <div class="manifesto-btn" data-i18n="manifesto_btn">Manifesto</div>
-
+    <div class="manifesto-btn" data-i18n="manifesto_title">Manifesto</div>
     <div class="manifesto-popup">
-      <h3 data-i18n="manifesto_title">Manifesto</h3>
       <p data-i18n="manifesto_p1"></p>
       <p data-i18n="manifesto_p2"></p>
       <p data-i18n="manifesto_p3"></p>
       <p class="note" data-i18n="note"></p>
     </div>
   </div>
-
 </div>
 
-<!-- SLIDES -->
 <div class="slides">
 
   <!-- INTRO -->
@@ -53,11 +47,11 @@
     </div>
   </section>
 
-  <!-- CONFLICT 1 -->
+  <!-- RUSSIA x UKRAINE -->
   <section class="slide conflict">
     <div class="background">
-      <div class="bg left putin"></div>
-      <div class="bg right zelensky"></div>
+      <div class="bg putin"></div>
+      <div class="bg zelensky"></div>
     </div>
     <div class="overlay"></div>
     <div class="text-box">
@@ -69,11 +63,11 @@
     </div>
   </section>
 
-  <!-- CONFLICT 2 -->
+  <!-- HAMAS x ISRAEL -->
   <section class="slide conflict">
     <div class="background">
-      <div class="bg left hamas"></div>
-      <div class="bg right israel"></div>
+      <div class="bg hamas"></div>
+      <div class="bg israel"></div>
     </div>
     <div class="overlay"></div>
     <div class="text-box">
@@ -81,22 +75,6 @@
       <p data-i18n="c2_p1"></p>
       <p data-i18n="c2_p2"></p>
       <p data-i18n="c2_p3"></p>
-      <p class="note" data-i18n="note"></p>
-    </div>
-  </section>
-
-  <!-- CONFLICT 3 -->
-  <section class="slide conflict">
-    <div class="background">
-      <div class="bg left eua"></div>
-      <div class="bg right china"></div>
-    </div>
-    <div class="overlay"></div>
-    <div class="text-box">
-      <h1 data-i18n="c3_title"></h1>
-      <p data-i18n="c3_p1"></p>
-      <p data-i18n="c3_p2"></p>
-      <p data-i18n="c3_p3"></p>
       <p class="note" data-i18n="note"></p>
     </div>
   </section>
